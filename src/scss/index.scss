@@ -1,0 +1,47 @@
+@import "./scss/colors.scss";
+@import "./scss/images.scss";
+@import "./scss/navbar.scss";
+@import "./scss/buttons.scss";
+@import "./scss/modal.scss";
+@import "./scss/footer.scss";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -60px;
+}
+
+.wrapper:after {
+  content: "";
+  display: block;
+  height: 60px;
+}
+
+.varela-round {
+  font-family: 'Varela Round';
+}
+
+.row {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.jumbotron {
+  margin-top: 90px;
+  p {
+    font-size: 14px;
+  }
+}
+
+.pointer:hover {
+  cursor: pointer;
+}

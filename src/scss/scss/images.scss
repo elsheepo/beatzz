@@ -1,0 +1,41 @@
+#blacksheep {
+  height: 15%;
+  width: 15%;
+}
+
+#docImg {
+  height: 10%;
+  width: 10%;
+}
+
+#whiteSheep {
+  height: 30px;
+  width: 30px;
+  // padding-bottom: 10px;
+}
+
+.float-left {
+  width: 10%;
+  height: 10%;
+  float: top;
+  margin: 0px 0px 0px 0px;
+}
+.navbar-brand {
+  padding-top: 10px;
+  padding-bottom: 0px;
+}
+
+@media screen and (min-width: 992px) {
+  
+  .float-left {
+    width: 70%;
+    height: 70%;
+    float: left;
+    margin: 0px 0px 0px 0px;
+  }
+
+  #docImg {
+    height: 50%;
+    width: 50%;
+  }
+}

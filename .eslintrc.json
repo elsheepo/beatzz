@@ -1,0 +1,15 @@
+{
+  "extends": "standard",
+  "plugins": ["standard", "promise"],
+  "rules": {
+    "semi": "off",
+    "quotes": "off",
+    "space-before-function-paren": "off",
+    "no-unused-vars": "off",
+    "jsx-a11y/anchor-is-valid": [ "error", {
+      "components": [ "Link" ],
+      "specialLink": [ "hrefLeft", "hrefRight" ],
+      "aspects": [ "noHref", "invalidHref", "preferButton" ]
+    }]
+  }
+}
