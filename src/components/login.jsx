@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Image, Form, FormGroup,
-  FormControl, ControlLabel, HelpBlock, Tooltip,
-  OverlayTrigger } from "react-bootstrap";
+import { Modal, Image, Form, FormGroup, FormControl, ControlLabel, HelpBlock, Tooltip, OverlayTrigger } from "react-bootstrap";
 
 class Login extends Component {
   constructor(props, content) {
@@ -10,8 +8,10 @@ class Login extends Component {
     this.handleClose = this.handleClose.bind(this);
     this.state = { show: false };
   }
+  
   handleClose() { this.setState({ show: false }); }
   handleShow() { this.setState({ show: true }); }
+
   render() {
     const tooltip = <Tooltip id="modal-tooltip">bah...</Tooltip>;
     return (

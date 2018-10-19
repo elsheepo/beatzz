@@ -8,22 +8,33 @@ import Docs from "./docs";
 import Links from "./links";
 import Contact from "./contact";
 import Login from "./login";
+import Signup from "./signup";
 
 class InactiveSession extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSignupClick = this.handleSignupClick.bind(this);
-    this.handleLoginClick = this.handleLoginClick.bind(this);
+  constructor(props, content) {
+    super(props, content);
+    this.state = {
+      loginModalShow: false,
+      signupModalShow: false
+    };
+    this.handleLoginShow = this.handleShow.bind(this);
+    this.handleLoginClose = this.handleClose.bind(this);
+    this.handleSignupShow = this.handleShow.bind(this);
+    this.handleSignupClose = this.handleClose.bind(this);
   }
-  handleSignupClick() { document.getElementById('signup').style.display = 'block'; }
-  handleLoginClick() { document.getElementById('login').style.display = 'block'; }
+
+  handleLoginClose() { this.setState({ loginModalShow: false }); }
+  handleLoginShow() { this.setState({ loginModalShow: true }); }
+  handleSignupClose() { this.setState({ signupModalShow: false }); }
+  handleSignupShow() { this.setState({ signupModalShow: true }); }
+
   render() {
     return (
       <Nav pullRight>
-        <NavItem id="signupAnchor" onClick={this.handleSignupClick}>
+        <NavItem id="signupAnchor" onClick={this.handleSignupShow}>
           <Glyphicon glyph="user" /> Signup
         </NavItem>
-        <NavItem id="loginAnchor" onClick={this.handleLoginClick}>
+        <NavItem id="loginAnchor" onClick={this.handleLoginShow}>
           <Glyphicon glyph="log-in" /> Login
         </NavItem>
       </Nav>
@@ -46,7 +57,7 @@ class ActiveSession extends Component {
   }
 }
 
-class Navbar2 extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -120,4 +131,4 @@ class Navbar2 extends Component {
   }
 }
 
-export default Navbar2;
+export default NavBar;

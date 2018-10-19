@@ -7,7 +7,7 @@ import Updates from "./updates";
 class Contact extends Component {
   constructor(props, context) {
     super(props, context);
-    
+
     this.state = {
       name: '',
       email: '',
@@ -56,40 +56,23 @@ class Contact extends Component {
           <p className="text-center text-primary varela-round">CONTACT</p>
           <Well bsSize="large">
           <Form>
-            <FormGroup
-              controlId="contactName"
-              validationState={this.validateName()}
-            >
+            <FormGroup controlId="contactName" validationState={this.validateName()} >
               <ControlLabel>Name</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.name}
-                onChange={this.handleNameChange}
-              />
+              <FormControl type="text" value={this.state.name} onChange={this.handleNameChange} />
               <FormControl.Feedback />
+              <HelpBlock></HelpBlock>
             </FormGroup>
-            <FormGroup
-              controlId="contactEmail"
-              validationState={this.validateEmail()}
-            >
+            <FormGroup controlId="contactEmail" validationState={this.validateEmail()} >
               <ControlLabel>Email Address</ControlLabel>
-              <FormControl
-                type="text"
-                value={this.state.email}
-                onChange={this.handleEmailChange}
-              />
+              <FormControl type="text" value={this.state.email} onChange={this.handleEmailChange} />
               <FormControl.Feedback />
+              <HelpBlock></HelpBlock>
             </FormGroup>
-            <FormGroup 
-              controlId="contactMessage"
-              validationState={this.validateMessage()}
-            >
+            <FormGroup controlId="contactMessage" validationState={this.validateMessage()} >
               <ControlLabel>Message</ControlLabel>
-              <FormControl 
-                componentClass="textarea"
-                value={this.state.message}
-                onChange={this.handleMessageChange} />
+              <FormControl componentClass="textarea" rows="5" value={this.state.message} onChange={this.handleMessageChange} />
               <FormControl.Feedback />
+              <HelpBlock></HelpBlock>
             </FormGroup>
             <br />
             <br />

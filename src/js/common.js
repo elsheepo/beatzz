@@ -1,5 +1,4 @@
 import $ from "jquery";
-import Login from "../components/login";
 
 $(function () {
   // Get the modal forms

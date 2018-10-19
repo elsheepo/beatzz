@@ -2,11 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./scss/index.scss";
-import "react-bootstrap/dist/react-bootstrap";
 import "./js/common";
 
 import App from './App';
-import Navbar from "./components/navbar";
+import NavBar from "./components/navbar";
 import Updates from "./components/updates";
 import Footer from "./components/footer";
 import Privacy from "./components/privacy";
@@ -17,7 +16,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
-ReactDOM.render(<Navbar />, document.getElementById("navbarRoot"));
+ReactDOM.render(<NavBar />, document.getElementById("navbarRoot"));
 ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));
 ReactDOM.render(<Footer />, document.getElementById("footerRoot"));
 
