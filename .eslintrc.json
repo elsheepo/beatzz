@@ -1,6 +1,9 @@
 {
-  "extends": "standard",
-  "plugins": ["standard", "promise"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+],
+  "plugins": ["node", "react", "standard", "promise"],
   "rules": {
     "semi": "off",
     "quotes": "off",

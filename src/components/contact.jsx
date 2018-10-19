@@ -1,15 +1,50 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import { Jumbotron, Image, Well, Button } from "react-bootstrap";
+import { Jumbotron, Image, Well, Form, FormGroup, FormControl, ControlLabel, HelpBlock } from "react-bootstrap";
 
 import Updates from "./updates";
-import "../js/formValidation";
 
 class Contact extends Component {
-  
-  handleClick = () => {
-    ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));
+  constructor(props, context) {
+    super(props, context);
+    
+    this.state = {
+      name: '',
+      email: '',
+      message: ''
+    };
+
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleEmailChange = this.handleEmailChange.bind(this);
+    this.handleMessageChange = this.handleMessageChange.bind(this);
+
+    this.handleCancelClick = this.handleCancelClick.bind(this);
   }
+
+  validateName() {
+    const length = this.state.name.length;
+    if (length > 0) return 'success';
+    return null;
+  }
+  validateEmail() {
+    const email = this.state.email;
+    const length = this.state.email.length;
+    if (length === 0) return null;
+    else if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'error';
+    else if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'success';
+    return null;
+  }
+  validateMessage() {
+    const length = this.state.message.length;
+    if (length > 0) return 'success';
+    return null;
+  }
+
+  handleNameChange(e) { this.setState({ name: e.target.value }); }
+  handleEmailChange(e) { this.setState({ email: e.target.value }); }
+  handleMessageChange(e) { this.setState({ message: e.target.value }); }
+
+  handleCancelClick() { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));  }
 
   render() {
     return (
@@ -20,32 +55,47 @@ class Contact extends Component {
           </div>
           <p className="text-center text-primary varela-round">CONTACT</p>
           <Well bsSize="large">
-            <form id="contactForm" className="needs-validation" noValidate>
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" className="form-control" id="name" placeholder="Name" required />
-                <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Please enter your name.</div>
-              </div>
-              <br />
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input type="email" className="form-control" id="email" placeholder="Email Address" required />
-                <div className="valid-feedback">Looks good!</div>
-                <div className="invalid-feedback">Please enter your email address.</div>
-              </div>
-              <br />
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea className="form-control" id="message" rows="5" placeholder="Message" required></textarea>
-                <div className="valid-feedback">Thank you for your feedback!</div>
-                <div className="invalid-feedback">Please enter a message.</div>
-              </div>
-              <br />
-              <br />
-              <button type="submit" className="button blue" id="sendMessageButton">Send</button>
-              <button type="button" className="button red" id="cancelMessageButton" onClick={this.handleClick}>Cancel</button>
-            </form>
+          <Form>
+            <FormGroup
+              controlId="contactName"
+              validationState={this.validateName()}
+            >
+              <ControlLabel>Name</ControlLabel>
+              <FormControl
+                type="text"
+                value={this.state.name}
+                onChange={this.handleNameChange}
+              />
+              <FormControl.Feedback />
+            </FormGroup>
+            <FormGroup
+              controlId="contactEmail"
+              validationState={this.validateEmail()}
+            >
+              <ControlLabel>Email Address</ControlLabel>
+              <FormControl
+                type="text"
+                value={this.state.email}
+                onChange={this.handleEmailChange}
+              />
+              <FormControl.Feedback />
+            </FormGroup>
+            <FormGroup 
+              controlId="contactMessage"
+              validationState={this.validateMessage()}
+            >
+              <ControlLabel>Message</ControlLabel>
+              <FormControl 
+                componentClass="textarea"
+                value={this.state.message}
+                onChange={this.handleMessageChange} />
+              <FormControl.Feedback />
+            </FormGroup>
+            <br />
+            <br />
+            <button type="submit" className="button blue" id="sendMessageButton">Send</button>
+            <button type="button" className="button red" id="cancelMessageButton" onClick={this.handleCancelClick}>Cancel</button>
+          </Form>
           </Well>
         </Jumbotron>
       </React.Fragment>
