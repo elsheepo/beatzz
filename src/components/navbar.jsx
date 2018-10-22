@@ -7,34 +7,21 @@ import Projects from "./projects";
 import Docs from "./docs";
 import Links from "./links";
 import Contact from "./contact";
-import Login from "./login";
-import Signup from "./signup";
 
 class InactiveSession extends Component {
-  constructor(props, content) {
-    super(props, content);
-    this.state = {
-      loginModalShow: false,
-      signupModalShow: false
-    };
-    this.handleLoginShow = this.handleShow.bind(this);
-    this.handleLoginClose = this.handleClose.bind(this);
-    this.handleSignupShow = this.handleShow.bind(this);
-    this.handleSignupClose = this.handleClose.bind(this);
+  constructor(props) {
+    super(props);
+    this.state = {};
+
   }
-
-  handleLoginClose() { this.setState({ loginModalShow: false }); }
-  handleLoginShow() { this.setState({ loginModalShow: true }); }
-  handleSignupClose() { this.setState({ signupModalShow: false }); }
-  handleSignupShow() { this.setState({ signupModalShow: true }); }
-
+  handleSignupShow = () => { document.getElementById('signup').style.display = 'block' }
   render() {
     return (
       <Nav pullRight>
         <NavItem id="signupAnchor" onClick={this.handleSignupShow}>
           <Glyphicon glyph="user" /> Signup
         </NavItem>
-        <NavItem id="loginAnchor" onClick={this.handleLoginShow}>
+        <NavItem id="loginAnchor" onClick={this.props.displayLoginClicked}>
           <Glyphicon glyph="log-in" /> Login
         </NavItem>
       </Nav>
@@ -60,38 +47,34 @@ class ActiveSession extends Component {
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLoggedIn: false,
+    this.state = {      
       defaultExpanded: true,
       collapseOnSelect: true
     };
-    this.handleLogoutClick = this.handleLogoutClick.bind(this);
-    this.handleUpdatesClick = this.handleUpdatesClick.bind(this);
-    this.handleProjectsClick = this.handleProjectsClick.bind(this);
-    this.handleDocsClick = this.handleDocsClick.bind(this);
-    this.handleLinksClick = this.handleLinksClick.bind(this);
-    this.handleContactClick = this.handleContactClick.bind(this);
   }
-  handleLogoutClick() { this.setState(state => ({isLoggedIn: false})); }
-  handleUpdatesClick() { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot")); }
-  handleProjectsClick() { ReactDOM.render(<Projects />, document.getElementById("jumbotronRoot")); }
-  handleDocsClick() { ReactDOM.render(<Docs />, document.getElementById("jumbotronRoot")); }
-  handleLinksClick() { ReactDOM.render(<Links />, document.getElementById("jumbotronRoot")); }
-  handleContactClick() { ReactDOM.render(<Contact />, document.getElementById("jumbotronRoot")); }
+
+  handleLogoutClick = () => { this.setState({isLoggedIn: false}) }
+  
+  handleUpdatesClick = () => { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot")); }
+  handleProjectsClick = () => { ReactDOM.render(<Projects />, document.getElementById("jumbotronRoot")); }
+  handleDocsClick = () => { ReactDOM.render(<Docs />, document.getElementById("jumbotronRoot")); }
+  handleLinksClick = () => { ReactDOM.render(<Links />, document.getElementById("jumbotronRoot")); }
+  handleContactClick = () => { ReactDOM.render(<Contact />, document.getElementById("jumbotronRoot")); }
 
   render() {
+    
     const popover = (
       <Popover id="modal-popover" title="bug reports appreciated!">
         Please, while browsing, take note of any bugs found and email them to me via the contact form!
       </Popover>
     );
-    const isLoggedIn = this.state.isLoggedIn;
+    const isLoggedIn = this.props.isLoggedIn;
     let loginControl;
 
     if (isLoggedIn) {
-      loginControl = <ActiveSession onClick={this.handleLogoutClick} />;
+      loginControl = <ActiveSession onClick={this.props.loginToggle} />;
     } else {
-      loginControl = <InactiveSession />;
+      loginControl = <InactiveSession displayLoginClicked={this.props.displayLoginClicked} />;
     }
 
     return (

@@ -1,14 +1,13 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import { Well } from 'react-bootstrap';
 
 class Signup extends Component {
   constructor(props, content) {
     super(props, content);
     this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
     this.state = { show: false };
   }
-  handleCloseClick() { document.getElementById('signup').style.display = 'none'; }
-  handleClose() { this.setState({ show: false }); }
+  handleCloseClick = () => { document.getElementById('signup').style.display = 'none' }
   handleShow() { this.setState({ show: true }); }
   render() {
     return (
@@ -19,7 +18,7 @@ class Signup extends Component {
               <span className="close" id="closeSignupFormSpan" title="Close Modal" onClick={this.handleCloseClick}>&times;</span>
               <img id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
             </div>
-            <div className="container">
+            <Well bsSize="large">
               <div className="control-group">
                 <div className="controls">
                   <label className="control-label" htmlFor="firstName">First Name</label>
@@ -76,7 +75,7 @@ class Signup extends Component {
               <div id="signupSuccess"></div>
               <button type="submit" className="button blue" name="signupButton">Sign Up</button>
               <button type="button" className="button red" onClick={this.handleCloseClick}>Cancel</button>
-            </div>
+            </Well>
           </form>
         </div>
       </React.Fragment>

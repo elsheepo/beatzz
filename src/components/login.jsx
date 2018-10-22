@@ -2,21 +2,25 @@ import React, { Component } from "react";
 import { Modal, Image, Form, FormGroup, FormControl, ControlLabel, HelpBlock, Tooltip, OverlayTrigger } from "react-bootstrap";
 
 class Login extends Component {
-  constructor(props, content) {
-    super(props, content);
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.state = { show: false };
+  constructor(props) {
+    super(props);
+    this.state = { show: this.props.display };
   }
-  
-  handleClose() { this.setState({ show: false }); }
-  handleShow() { this.setState({ show: true }); }
+  componentDidUpdate(prevProps){
+    if(prevProps.display !== this.props.display){
+        this.setState({          
+            show: this.props.display
+        });
+    }
+  }
+  handleClose = () => { this.setState({ show: false }) }
 
   render() {
+    const display = this.state.show;
     const tooltip = <Tooltip id="modal-tooltip">bah...</Tooltip>;
     return (
       <React.Fragment>
-        <Modal className="text-center" id="login" show={this.state.show} onHide={this.handleClose}>
+        <Modal className="text-center" id="login" show={display} onHide={this.handleClose}>
           <Modal.Header>
             <div className="img-container">
               <span className="close" title="Close Modal" onClick={this.handleClose}>&times;</span>
