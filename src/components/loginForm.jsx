@@ -16,14 +16,13 @@ class LoginForm extends Component {
   getUsernameValidationState() {
     const length = this.state.username.length;
     if (length > 0) return 'success';
-    else if (length === 0) return 'error';
     return null;
   }
 
   getPasswordValidationState() {
     const length = this.state.password.length;
     if (length > 8) return 'success';
-    else if (length < 8) return 'error';
+    else if (length > 0 && length < 8) return 'error';
     return null;
   }
 
