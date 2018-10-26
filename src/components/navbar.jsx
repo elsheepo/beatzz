@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { Navbar, Nav, NavItem, Image, Glyphicon, OverlayTrigger, Popover } from "react-bootstrap";
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { Navbar, Nav, NavItem, Image, Glyphicon, OverlayTrigger, Popover } from 'react-bootstrap'
 
 import Updates from "./updates";
 import Projects from "./projects";

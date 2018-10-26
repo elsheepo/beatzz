@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Modal, Jumbotron, Image, Well } from "react-bootstrap";
+import React, { Component } from 'react'
+import { Modal, Jumbotron, Image, Well } from 'react-bootstrap'
 
 class Privacy extends Component {
 

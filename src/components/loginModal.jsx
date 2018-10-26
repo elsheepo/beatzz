@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { Modal, Image, Tooltip, OverlayTrigger, Button } from "react-bootstrap";
-import LoginForm from './loginForm';
+import React, { Component } from 'react'
+import { Modal, Image, Tooltip, OverlayTrigger, Button } from 'react-bootstrap'
+import LoginForm from './loginForm'
 
 class Login extends Component {
 
@@ -31,7 +31,7 @@ class Login extends Component {
           dialogClassName=""
         >
           <Modal.Header>
-            <div className="img-container">
+            <div className="img-container text-center">
               <span className="close" title="Close Modal" onClick={this.props.handleHide}>&times;</span>
               <OverlayTrigger overlay={tooltip}>
                 <Image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
@@ -43,8 +43,10 @@ class Login extends Component {
             <LoginForm />
           </Modal.Body>
           <Modal.Footer>
-            <Button>Close</Button>
-            <Button bsStyle="primary">Save changes</Button>
+            <Button
+               onClick={this.props.handleHide}
+            >cancel</Button>
+            <Button bsStyle="primary">login</Button>
           </Modal.Footer>
         </Modal>
       </React.Fragment>

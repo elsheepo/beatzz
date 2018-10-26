@@ -1,9 +1,10 @@
-import React, { Component } from "react";
-import { FormGroup, FormControl, ControlLabel, HelpBlock } from "react-bootstrap";
+import React, { Component } from 'react'
+import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
 
 class LoginForm extends Component {
 
   constructor(props, context) {
+    super(props, context);
     this.state = {
       username: '',
       password: '',
@@ -40,11 +41,10 @@ class LoginForm extends Component {
           <FormControl
             type="text"
             value={this.state.username}
-            placeholder="Enter username"
             onChange={this.handleUsernameChange}
           />
           <FormControl.Feedback />
-          <HelpBlock>Validation is based on string length.</HelpBlock>
+          <HelpBlock></HelpBlock>
         </FormGroup>
         <FormGroup
           controlId="password"
@@ -54,11 +54,10 @@ class LoginForm extends Component {
           <FormControl
             type="password"
             value={this.state.password}
-            placeholder="Enter password"
             onChange={this.handlePasswordChange}
           />
           <FormControl.Feedback />
-          <HelpBlock>Validation is based on string length.</HelpBlock>
+          <HelpBlock></HelpBlock>
         </FormGroup>
       </form>
     );

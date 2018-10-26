@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Jumbotron, Image, Well, OverlayTrigger, Tooltip } from "react-bootstrap";
+import React, { Component } from 'react'
+import { Jumbotron, Image, Well, OverlayTrigger, Tooltip } from 'react-bootstrap';
 
 class Updates extends Component {
   render() {

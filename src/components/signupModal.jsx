@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
-import { Modal, Image } from 'react-bootstrap';
+import React, { Component } from 'react'
+import { Modal, Image, Button } from 'react-bootstrap'
+import SignupForm from './signupForm'
 
 class Signup extends Component {
 
@@ -29,16 +30,20 @@ class Signup extends Component {
           dialogClassName=""
         >
           <Modal.Header>
-            <div className="img-container">
+            <div className="img-container text-center">
               <span className="close" title="Close Modal" onClick={this.props.handleHide}>&times;</span>
                 <Image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
             </div>
             <p className="text-primary text-center varela-round">SIGNUP</p>
           </Modal.Header>
           <Modal.Body>
-            
+            <SignupForm />
           </Modal.Body>
           <Modal.Footer>
+            <Button
+               onClick={this.props.handleHide}
+            >cancel</Button>
+            <Button bsStyle="primary">signup</Button>
           </Modal.Footer>
         </Modal>
       </React.Fragment>

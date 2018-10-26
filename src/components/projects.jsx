@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Jumbotron, Image, Well } from "react-bootstrap";
+import React, { Component } from 'react'
+import { Jumbotron, Image, Well } from 'react-bootstrap'
 
 class Projects extends Component {
   render() {

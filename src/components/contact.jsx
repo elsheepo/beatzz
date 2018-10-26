@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { Jumbotron, Image, Well, Form, FormGroup, FormControl, ControlLabel, HelpBlock } from "react-bootstrap";
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
+import { Jumbotron, Image, Well, Form, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
 
 import Updates from "./updates";
 
