@@ -9,19 +9,18 @@ import Links from "./links";
 import Contact from "./contact";
 
 class InactiveSession extends Component {
+
   constructor(props) {
     super(props);
-    this.state = {};
-
   }
-  handleSignupShow = () => { document.getElementById('signup').style.display = 'block' }
+
   render() {
     return (
       <Nav pullRight>
-        <NavItem id="signupAnchor" onClick={this.handleSignupShow}>
+        <NavItem id="signupAnchor" onClick={this.props.displaySignupClicked} >
           <Glyphicon glyph="user" /> Signup
         </NavItem>
-        <NavItem id="loginAnchor" onClick={this.props.displayLoginClicked}>
+        <NavItem id="loginAnchor" onClick={this.props.displayLoginClicked} >
           <Glyphicon glyph="log-in" /> Login
         </NavItem>
       </Nav>
@@ -30,13 +29,14 @@ class InactiveSession extends Component {
 }
 
 class ActiveSession extends Component {
+
   render() {
     return (
       <Nav pullRight>
-        <NavItem id="homeAnchor" onClick={this.props.onClick}>
+        <NavItem id="homeAnchor" onClick={this.props.onClick} >
           <Glyphicon glyph="home" /> Home
         </NavItem>
-        <NavItem id="logoutAnchor" onClick={this.props.onClick}>
+        <NavItem id="logoutAnchor" onClick={this.props.onClick} >
           <Glyphicon glyph="log-out" /> Logout
         </NavItem>
       </Nav>
@@ -45,6 +45,7 @@ class ActiveSession extends Component {
 }
 
 class NavBar extends Component {
+
   constructor(props) {
     super(props);
     this.state = {      
@@ -72,20 +73,23 @@ class NavBar extends Component {
     let loginControl;
 
     if (isLoggedIn) {
-      loginControl = <ActiveSession onClick={this.props.loginToggle} />;
+      loginControl = 
+        <ActiveSession 
+          onClick={this.props.loginToggle} />;
     } else {
-      loginControl = <InactiveSession displayLoginClicked={this.props.displayLoginClicked} />;
+      loginControl = 
+        <InactiveSession 
+          displayLoginClicked={this.props.displayLoginClicked} 
+          displaySignupClicked={this.props.displaySignupClicked} />;
     }
 
     return (
       <Navbar fixedTop inverse fluid collapseOnSelect>
         <Navbar.Header>
           <Navbar.Brand>
-            <a>
-              <OverlayTrigger overlay={popover}>
-                <Image id="whiteSheep" src="../img/sheep.png" alt="whitesheep" />
-              </OverlayTrigger>
-            </a>
+            <OverlayTrigger overlay={popover}>
+              <a><Image id="whiteSheep" src="../img/sheep.png" alt="whitesheep" /></a>
+            </OverlayTrigger>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>

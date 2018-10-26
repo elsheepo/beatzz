@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import NavBar from './components/navbar';
 import Updates from './components/updates';
 import Footer from './components/footer';
-import Privacy from './components/privacy';
-import Signup from './components/signup';
-import Login from './components/login';
+import Privacy from './components/privacyModal';
+import Signup from './components/signupModal';
+import Login from './components/loginModal';
 
 class App extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -17,9 +18,16 @@ class App extends Component {
     };
   }
 
-  loginToggle = () => { this.setState({isLoggedIn: !this.state.isLoggedIn})}
-  displayLoginHandler = () => { this.setState({ displayLogin: true })}
-  displaySignupHandler = () => { this.setState({ displaySignup: true })}
+  loginToggle = () => {this.setState({isLoggedIn: !this.state.isLoggedIn})}
+
+  displayLoginHandler = () => {this.setState({displayLogin: true})}
+  hideLoginHandler = () => {this.setState({displayLogin: false})}
+
+  displaySignupHandler = () => {this.setState({displaySignup: true})}
+  hideSignupHandler = () => {this.setState({displaySignup: false})}
+
+  displayPrivacyHandler = () => {this.setState({displayPrivacy: true})}
+  hidePrivacyHandler = () => {this.setState({displayPrivacy: false})}
 
   render() {
     const isLoggedIn = this.state.isLoggedIn;
@@ -38,15 +46,18 @@ class App extends Component {
           </div>
           <div id="loginRoot">
             <Login
-              display={displayLoginModal} />
+              display={displayLoginModal}
+              handleHide={this.hideLoginHandler} />
           </div>
           <div id="signupRoot">
             <Signup
-              display={displaySignupModal} />
+              display={displaySignupModal}
+              handleHide={this.hideSignupHandler} />
           </div>
           <div id="privacyRoot">
             <Privacy
-              display={displayPrivacyModal} />
+              display={displayPrivacyModal}
+              handleHide={this.hidePrivacyHandler} />
           </div>
           <div className="container-fluid text-center">
             <div className="row">
@@ -58,7 +69,10 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <div id="footerRoot"><Footer /></div>
+        <div id="footerRoot">
+          <Footer
+            displayPrivacyClicked={this.displayPrivacyHandler} />
+        </div>
       </React.Fragment>
     );
   }
