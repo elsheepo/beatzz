@@ -64,4 +64,4 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+export default Signup]Form;
