@@ -38,6 +38,8 @@ class Signup extends Component {
           <Modal.Body>
             
           </Modal.Body>
+          <Modal.Footer>
+          </Modal.Footer>
         </Modal>
       </React.Fragment>
     );
