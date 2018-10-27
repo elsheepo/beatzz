@@ -46,7 +46,7 @@ class Login extends Component {
             <Button
                onClick={this.props.handleHide}
             >cancel</Button>
-            <Button bsStyle="primary">login</Button>
+            <Button bsStyle="primary" disabled>login</Button>
           </Modal.Footer>
         </Modal>
       </React.Fragment>

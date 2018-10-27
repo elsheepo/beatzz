@@ -10,8 +10,6 @@ class LoginForm extends Component {
       password: '',
       isValid: false
     };
-    this.handleUsernameChange = this.handleUsernameChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
 
   getUsernameValidationState() {
@@ -27,8 +25,7 @@ class LoginForm extends Component {
     return null;
   }
 
-  handleUsernameChange(e) { this.setState({ username: e.target.value}); }
-  handlePasswordChange(e) {  this.setState({ password: e.target.value}); }
+  handleChange = (e) => { this.setState({[e.target.name]: e.target.value}) }
 
   render() {
     return (
@@ -36,12 +33,15 @@ class LoginForm extends Component {
         <FormGroup
           controlId="username"
           validationState={this.getUsernameValidationState()}
+          minLength="1"
+          maxLength="12"
         >
           <ControlLabel>username</ControlLabel>
           <FormControl
+            name="username"
             type="text"
             value={this.state.username}
-            onChange={this.handleUsernameChange}
+            onChange={this.handleChange}
           />
           <FormControl.Feedback />
           <HelpBlock></HelpBlock>
@@ -52,9 +52,10 @@ class LoginForm extends Component {
         >
           <ControlLabel>password</ControlLabel>
           <FormControl
+          name="password"
             type="password"
             value={this.state.password}
-            onChange={this.handlePasswordChange}
+            onChange={this.handleChange}
           />
           <FormControl.Feedback />
           <HelpBlock></HelpBlock>

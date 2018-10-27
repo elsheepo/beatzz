@@ -43,7 +43,7 @@ class Signup extends Component {
             <Button
                onClick={this.props.handleHide}
             >cancel</Button>
-            <Button bsStyle="primary">signup</Button>
+            <Button bsStyle="primary" disabled>signup</Button>
           </Modal.Footer>
         </Modal>
       </React.Fragment>
