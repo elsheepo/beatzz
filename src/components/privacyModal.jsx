@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Jumbotron, Image, Well } from 'react-bootstrap'
+import { Modal, Image, Well } from 'react-bootstrap'
 
 class Privacy extends Component {
 
@@ -29,7 +29,7 @@ class Privacy extends Component {
           dialogClassName=""
         >
           <Modal.Header>
-            <div className="img-container">
+            <div className="img-container text-center">
               <span className="close" title="Close Modal" onClick={this.props.handleHide}>&times;</span>
               <Image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
             </div>

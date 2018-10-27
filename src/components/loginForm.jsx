@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
 
 class LoginForm extends Component {
 
@@ -20,8 +20,8 @@ class LoginForm extends Component {
 
   getPasswordValidationState() {
     const length = this.state.password.length;
-    if (length > 8) return 'success';
-    else if (length > 0 && length < 8) return 'error';
+    if (length >= 8) return 'success';
+    else if (length > 0 && length < 8) return 'warning';
     return null;
   }
 
@@ -60,6 +60,11 @@ class LoginForm extends Component {
           <FormControl.Feedback />
           <HelpBlock></HelpBlock>
         </FormGroup>
+        <hr />
+        <div className="text-right">
+          <Button onClick={this.props.handleHide} >cancel</Button>
+          <Button bsStyle="primary" disabled>login</Button>
+        </div>
       </form>
     );
   }

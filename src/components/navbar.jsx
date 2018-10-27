@@ -10,10 +10,6 @@ import Contact from "./contact";
 
 class InactiveSession extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <Nav pullRight>

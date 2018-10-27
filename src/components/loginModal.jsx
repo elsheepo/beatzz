@@ -24,6 +24,7 @@ class Login extends Component {
       <React.Fragment>
         <Modal 
           bsSize="large"
+          backdrop="true"
           show={display}
           onHide={this.props.handleHide}
           container={this}
@@ -40,14 +41,8 @@ class Login extends Component {
             <p className="text-primary text-center varela-round">LOGIN</p>
           </Modal.Header>
           <Modal.Body>
-            <LoginForm />
+            <LoginForm handleHide={this.props.handleHide} />
           </Modal.Body>
-          <Modal.Footer>
-            <Button
-               onClick={this.props.handleHide}
-            >cancel</Button>
-            <Button bsStyle="primary" disabled>login</Button>
-          </Modal.Footer>
         </Modal>
       </React.Fragment>
     );

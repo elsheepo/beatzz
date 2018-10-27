@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FormGroup, FormControl, ControlLabel, HelpBlock, Checkbox } from 'react-bootstrap'
+import { FormGroup, FormControl, ControlLabel, HelpBlock, Checkbox, Button } from 'react-bootstrap'
 
 class SignupForm extends Component {
 
@@ -12,9 +12,14 @@ class SignupForm extends Component {
       username: '',
       password: '',
       repeatPassword: '',
+      agreed: false,
       isValid: false
     };
   }
+
+  
+  handleChange = (e) => { this.setState({[e.target.name]: e.target.value}) }
+  handleCheckboxChange = (e) => { this.setState({agreed: !this.state.agreed}) }
 
   validateFirstNameLength() {
     const length = this.state.firstName.length;
@@ -37,7 +42,8 @@ class SignupForm extends Component {
 
   validateUsernameLength() {
     const length = this.state.username.length;
-    if (length > 0) return 'success';
+    if (length > 0 && length < 13) return 'success';
+    else if (length > 12) return 'error';
     return null;
   }
 
@@ -49,13 +55,17 @@ class SignupForm extends Component {
   }
 
   validatePasswordRepeat() {
-    const length = this.state.repeatPassword.length;
-    if (length >= 8) return 'success';
-    else if (length > 0 && length < 8) return 'warning';
+    const firstEntry = this.state.password;
+    const secondEntry = this.state.repeatPassword;
+    if (secondEntry.length > 0 && secondEntry === firstEntry) return 'success';
     return null;
   }
 
-  handleChange = (e) => { this.setState({[e.target.name]: e.target.value}) }
+  validateAgreement() {
+    const agreed = this.state.agreed;
+    if (agreed) return 'success';
+    return null;
+  }
 
   render() {
     return ( 
@@ -149,7 +159,15 @@ class SignupForm extends Component {
           <FormControl.Feedback />
           <HelpBlock></HelpBlock>
         </FormGroup>
-        <Checkbox validationState="success">You must agree with our Terms and Privacy Conditions</Checkbox>
+        <Checkbox
+          name="agreed"
+          validationState={this.validateAgreement()}
+          onChange={this.handleCheckboxChange} >You must agree with our Terms and Privacy Conditions</Checkbox>
+          <hr />
+          <div className="text-right">
+            <Button onClick={this.props.handleHide} >cancel</Button>
+            <Button bsStyle="primary" type="submit" disabled>signup</Button>
+          </div>
       </form>
     );
   }

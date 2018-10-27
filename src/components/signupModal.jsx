@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Modal, Image, Button } from 'react-bootstrap'
+import { Modal, Image } from 'react-bootstrap'
 import SignupForm from './signupForm'
 
 class Signup extends Component {
@@ -37,14 +37,8 @@ class Signup extends Component {
             <p className="text-primary text-center varela-round">SIGNUP</p>
           </Modal.Header>
           <Modal.Body>
-            <SignupForm />
+            <SignupForm handleHide={this.props.handleHide} />
           </Modal.Body>
-          <Modal.Footer>
-            <Button
-               onClick={this.props.handleHide}
-            >cancel</Button>
-            <Button bsStyle="primary" disabled>signup</Button>
-          </Modal.Footer>
         </Modal>
       </React.Fragment>
     );
