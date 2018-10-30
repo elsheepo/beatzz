@@ -6,11 +6,13 @@ class Signup extends Component {
 
   constructor(props, content) {
     super(props, content);
-    this.state = {show: false};
+    this.state = {
+      show: false
+    };
   }
 
   componentDidUpdate(prevProps) {
-    if(prevProps.display !== this.props.display) {
+    if (prevProps.display !== this.props.display) {
       this.setState({          
         show: this.props.display
       });

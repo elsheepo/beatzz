@@ -52,7 +52,7 @@ class LoginForm extends Component {
         >
           <ControlLabel>password</ControlLabel>
           <FormControl
-          name="password"
+            name="password"
             type="password"
             value={this.state.password}
             onChange={this.handleChange}

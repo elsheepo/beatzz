@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
-import { Modal, Image, Tooltip, OverlayTrigger, Button } from 'react-bootstrap'
+import { Modal, Image, Tooltip, OverlayTrigger } from 'react-bootstrap'
 import LoginForm from './loginForm'
 
 class Login extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {show: this.props.display};
+    this.state = {
+      show: this.props.display
+    };
   }
   
   componentDidUpdate(prevProps) {
-    if(prevProps.display !== this.props.display) {
+    if (prevProps.display !== this.props.display) {
       this.setState({          
         show: this.props.display
       });
@@ -24,7 +26,7 @@ class Login extends Component {
       <React.Fragment>
         <Modal 
           bsSize="large"
-          backdrop="true"
+          backdrop="static"
           show={display}
           onHide={this.props.handleHide}
           container={this}

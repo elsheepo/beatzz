@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Jumbotron, Image, Well, Form, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap'
+import { Jumbotron, Image, Well, Form, FormGroup, FormControl, ControlLabel, HelpBlock, Button } from 'react-bootstrap'
 
 import Updates from "./updates";
 
@@ -13,12 +13,6 @@ class Contact extends Component {
       email: '',
       message: ''
     };
-
-    this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handleMessageChange = this.handleMessageChange.bind(this);
-
-    this.handleCancelClick = this.handleCancelClick.bind(this);
   }
 
   validateName() {
@@ -30,7 +24,7 @@ class Contact extends Component {
     const email = this.state.email;
     const length = this.state.email.length;
     if (length === 0) return null;
-    else if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'error';
+    else if (length > 0 && !email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'warning';
     else if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'success';
     return null;
   }
@@ -40,11 +34,9 @@ class Contact extends Component {
     return null;
   }
 
-  handleNameChange(e) { this.setState({ name: e.target.value }); }
-  handleEmailChange(e) { this.setState({ email: e.target.value }); }
-  handleMessageChange(e) { this.setState({ message: e.target.value }); }
+  handleChange = (e) => { this.setState({[e.target.name]: e.target.value}) }
 
-  handleCancelClick() { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));  }
+  handleCancelClick = () => { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));  }
 
   render() {
     return (
@@ -56,28 +48,47 @@ class Contact extends Component {
           <p className="text-center text-primary varela-round">CONTACT</p>
           <Well bsSize="large">
           <Form>
-            <FormGroup controlId="contactName" validationState={this.validateName()} >
+            <FormGroup 
+            controlId="contactName" 
+            validationState={this.validateName()} >
               <ControlLabel>Name</ControlLabel>
-              <FormControl type="text" value={this.state.name} onChange={this.handleNameChange} />
+              <FormControl
+                name="name"
+                type="text" 
+                value={this.state.name} 
+                onChange={this.handleChange} />
               <FormControl.Feedback />
               <HelpBlock></HelpBlock>
             </FormGroup>
             <FormGroup controlId="contactEmail" validationState={this.validateEmail()} >
               <ControlLabel>Email Address</ControlLabel>
-              <FormControl type="text" value={this.state.email} onChange={this.handleEmailChange} />
+              <FormControl 
+                name="email"
+                type="text" 
+                value={this.state.email} 
+                onChange={this.handleChange} />
               <FormControl.Feedback />
               <HelpBlock></HelpBlock>
             </FormGroup>
-            <FormGroup controlId="contactMessage" validationState={this.validateMessage()} >
+            <FormGroup 
+              controlId="contactMessage" 
+              validationState={this.validateMessage()} >
               <ControlLabel>Message</ControlLabel>
-              <FormControl componentClass="textarea" rows="5" value={this.state.message} onChange={this.handleMessageChange} />
+              <FormControl 
+                name="message"
+                componentClass="textarea"
+                rows="5" 
+                value={this.state.message} 
+                onChange={this.handleChange} />
               <FormControl.Feedback />
               <HelpBlock></HelpBlock>
             </FormGroup>
             <br />
             <br />
-            <button type="submit" className="button blue" id="sendMessageButton">Send</button>
-            <button type="button" className="button red" id="cancelMessageButton" onClick={this.handleCancelClick}>Cancel</button>
+            <div className="text-right">
+              <Button onClick={this.handleCancelClick}>Cancel</Button>
+              <Button bsStyle="primary" disabled>Send</Button>
+            </div>
           </Form>
           </Well>
         </Jumbotron>
