@@ -7,36 +7,73 @@ import Updates from "./updates";
 class Contact extends Component {
   constructor(props, context) {
     super(props, context);
-
     this.state = {
       name: '',
       email: '',
-      message: ''
+      message: '',
+      nameValid: true,
+      emailValid: true,
+      messageValid: true,
+      touched: {
+        name: false,
+        email: false,
+        message: false
+      }
     };
   }
 
   validateName() {
     const length = this.state.name.length;
-    if (length > 0) return 'success';
+    if (length > 0) {
+      return 'success';
+    }
     return null;
   }
+
   validateEmail() {
     const email = this.state.email;
     const length = this.state.email.length;
     if (length === 0) return null;
-    else if (length > 0 && !email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'warning';
-    else if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'success';
+    else if (length > 0 && !email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      return 'warning';
+    } 
+    else if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+      return 'success';
+    } 
     return null;
   }
+  
   validateMessage() {
     const length = this.state.message.length;
-    if (length > 0) return 'success';
+    if (length > 0) {
+      return 'success';
+    }
     return null;
   }
 
-  handleChange = (e) => { this.setState({[e.target.name]: e.target.value}) }
+  validateForm() {
+    const nameIsValid = this.validateName();
+    const emailIsValid = this.validateEmail();
+    const messageIsValid = this.validateMessage();
+    if (nameIsValid === 'success' && emailIsValid === 'success' && messageIsValid === 'success') {
+      return true;
+    }
+    return false;
+  }
 
-  handleCancelClick = () => { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));  }
+  handleChange = (e) => { 
+    this.setState({[e.target.name]: e.target.value}) 
+  }
+
+  handleBlur = (field) => (evt) => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true },
+    });
+  }
+
+  handleCancelClick = () => { 
+    ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot"));  
+  }
 
   render() {
     return (
@@ -56,7 +93,8 @@ class Contact extends Component {
                 name="name"
                 type="text" 
                 value={this.state.name} 
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                onBlur={this.handleBlur('name')} />
               <FormControl.Feedback />
               <HelpBlock></HelpBlock>
             </FormGroup>
@@ -66,7 +104,8 @@ class Contact extends Component {
                 name="email"
                 type="text" 
                 value={this.state.email} 
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                onBlur={this.handleBlur('email')} />
               <FormControl.Feedback />
               <HelpBlock></HelpBlock>
             </FormGroup>
@@ -79,7 +118,8 @@ class Contact extends Component {
                 componentClass="textarea"
                 rows="5" 
                 value={this.state.message} 
-                onChange={this.handleChange} />
+                onChange={this.handleChange}
+                onBlur={this.handleBlur('message')} />
               <FormControl.Feedback />
               <HelpBlock></HelpBlock>
             </FormGroup>
@@ -87,7 +127,7 @@ class Contact extends Component {
             <br />
             <div className="text-right">
               <Button onClick={this.handleCancelClick}>Cancel</Button>
-              <Button bsStyle="primary" disabled>Send</Button>
+              <Button bsStyle="primary" disabled={!this.validateForm()}>Send</Button>
             </div>
           </Form>
           </Well>

@@ -6,49 +6,98 @@ class LoginForm extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      username: '',
+      email: '',
       password: '',
+      touched: {
+        email: false,
+        password: false,
+      },
       isValid: false
     };
   }
 
-  getUsernameValidationState() {
-    const length = this.state.username.length;
-    if (length > 0) return 'success';
+  validateEmail() {
+    const email = this.state.email;
+    const length = this.state.email.length;
+    if (length === 0) return null;
+    else if (length > 0 && !email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'warning';
+    else if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) return 'success';
     return null;
   }
 
-  getPasswordValidationState() {
+  validatePassword() {
     const length = this.state.password.length;
     if (length >= 8) return 'success';
     else if (length > 0 && length < 8) return 'warning';
     return null;
   }
 
-  handleChange = (e) => { this.setState({[e.target.name]: e.target.value}) }
+  validateForm() {
+    const emailIsValid = this.validateEmail();
+    const passwordIsValid = this.validatePassword();
+    if (emailIsValid === 'success' && passwordIsValid === 'success') {
+      return true;
+    }
+    return false;
+  }
+
+  handleChange = (e) => {this.setState({[e.target.name]: e.target.value})}
+
+  handleBlur = (field) => (evt) => {
+    this.setState({
+      touched: { ...this.state.touched, [field]: true },
+    });
+  }
+  
+  handleSubmit = (evt) => {
+    if (!this.canBeSubmitted()) {
+      evt.preventDefault();
+      return;
+    }
+    const { email, password } = this.state;
+    alert(`Signed up with email: ${email} password: ${password}`);
+  }
+  
+  canBeSubmitted() {
+    const errors = this.validateForm();
+    const isDisabled = this.validateForm();
+    return !isDisabled;
+  }
 
   render() {
+    const errors = this.validateForm();
+    const isDisabled = Object.keys(errors).some(x => errors[x]);
+    
+    const shouldMarkError = (field) => {
+      const hasError = errors[field];
+      const shouldShow = this.state.touched[field];
+      
+      return hasError ? shouldShow : false;
+    };
+    
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <FormGroup
-          controlId="username"
-          validationState={this.getUsernameValidationState()}
-          minLength="1"
-          maxLength="12"
+          controlId="email"
+          validationState={this.validateEmail()}
+          
         >
-          <ControlLabel>username</ControlLabel>
+          <ControlLabel>email</ControlLabel>
           <FormControl
-            name="username"
+            name="email"
             type="text"
-            value={this.state.username}
+            value={this.state.email}
             onChange={this.handleChange}
+            onBlur={this.handleBlur('email')}
+            className={shouldMarkError('password') ? "error" : ""}
           />
           <FormControl.Feedback />
           <HelpBlock></HelpBlock>
         </FormGroup>
         <FormGroup
           controlId="password"
-          validationState={this.getPasswordValidationState()}
+          validationState={this.validatePassword()}
+          
         >
           <ControlLabel>password</ControlLabel>
           <FormControl
@@ -56,14 +105,16 @@ class LoginForm extends Component {
             type="password"
             value={this.state.password}
             onChange={this.handleChange}
+            onBlur={this.handleBlur('password')}
+            className={shouldMarkError('password') ? "error" : ""}
           />
           <FormControl.Feedback />
           <HelpBlock></HelpBlock>
         </FormGroup>
         <hr />
         <div className="text-right">
-          <Button onClick={this.props.handleHide} >cancel</Button>
-          <Button bsStyle="primary" disabled>login</Button>
+          <Button onClick={this.props.handleHide}>cancel</Button>
+          <Button bsStyle="primary" type="submit" disabled={isDisabled}>login</Button>
         </div>
       </form>
     );
