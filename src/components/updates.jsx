@@ -1,20 +1,20 @@
 import React, { Component } from 'react'
-import { Jumbotron, Image, Well, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Jumbotron, Card } from 'reactstrap' 
 
 class Updates extends Component {
   render() {
-    const tooltip = <Tooltip id="modal-tooltip">bah...</Tooltip>;
+    // const tooltip = <Tooltip id="modal-tooltip">bah...</Tooltip>;
     return (
       <React.Fragment>
         <Jumbotron>
           <div className="img-container">
-            <OverlayTrigger overlay={tooltip}>
-              <Image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
-            </OverlayTrigger>
+            {/* <OverlayTrigger overlay={tooltip}> */}
+              <image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
+            {/* </OverlayTrigger> */}
           </div>
           <p className="text-primary varela-round">UPDATES</p>
-          <Well bsSize="large">
-          <p><u><b>10/30/2018</b></u><br />Migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a> finished, only to realize I want to use  <a href="https://material-ui.com/" rel="noopener noreferrer" target="_blank">material-ui</a> now instead :p. Forms will be temporarily down while I rewrite the back end with <a href="https://nodejs.org/en/" rel="noopener noreferrer" target="_blank">Node.js</a>. I'll be taking a month off from development to prepare for the <a href="https://www.jlpt.jp/e/" rel="noopener noreferrer" target="_blank">JLPT</a>, wish me luck! See you again in December! -beatzz</p>
+          <Card>
+            <p><u><b>10/30/2018</b></u><br />Migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a> finished, only to realize I want to use  <a href="https://material-ui.com/" rel="noopener noreferrer" target="_blank">material-ui</a> now instead :p. Forms will be temporarily down while I rewrite the back end with <a href="https://nodejs.org/en/" rel="noopener noreferrer" target="_blank">Node.js</a>. I'll be taking a month off from development to prepare for the <a href="https://www.jlpt.jp/e/" rel="noopener noreferrer" target="_blank">JLPT</a>, wish me luck! See you again in December! -beatzz</p>
             <p><u><b>10/13/2018</b></u><br />Began the migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a>. -beatzz</p>
             <p><u><b>10/7/2018</b></u><br />Today marks another milestone achievement for beatzz.co! The entire site has been rebuilt upon the <a href="https://reactjs.org/" rel="noopener noreferrer" target="_blank">React framework</a>, plus all of this sites JavaScript, JSX, and SCSS, & HTML are minified & bundled using <a href="https://webpack.js.org" rel="noopener noreferrer" target="_blank">webpack</a>, resulting in faster loading times. Which is to say, beatzz.co is now built using the same tools and standards as the most popular sites on the web such as <a href="https://www.facebook.com" rel="noopener noreferrer" target="_blank">Facebook</a>, <a href="https://www.instagram.com" rel="noopener noreferrer" target="_blank">Instagram</a>, <a href="https://www.netflix.com" rel="noopener noreferrer" target="_blank">Netflix</a>, <a href="https://www.paypal.com/us/home" rel="noopener noreferrer" target="_blank">paypal</a>, and <a href="https://www.airbnb.com" rel="noopener noreferrer" target="_blank">Airbnb</a> to name a few.  -beatzz</p>
             <p><u><b>10/2/2018</b></u><br />beatzz.co saw major improvements on the back end today. Now coming to you with <a href="https://en.wikipedia.org/wiki/SHA-2" rel="noopener noreferrer" target="_blank">SHA 256 bit encryption</a>, all data passed between you and this server is secure.  -beatzz</p>
@@ -32,7 +32,7 @@ class Updates extends Component {
             <p><u><b>12/19/2017</b></u><br />Finished the site's HTML & CSS for now, moving on to JavaScript & PHP to get the forms operational. Stay tuned ;)  -beatzz</p>
             <p><u><b>12/18/2017</b></u><br />Worked on the HTML and CSS, dialed in the sticky footer & the collapsed navigation menu.  -beatzz</p>
             <p><u><b>12/17/2017</b></u><br />Animated the collapsed navigation menu button.  -beatzz</p>
-          </Well>
+          </Card>
         </Jumbotron>
       </React.Fragment>
     );

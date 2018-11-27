@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import { Navbar, Nav, NavItem, Image, Glyphicon, OverlayTrigger, Popover } from 'react-bootstrap'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem, } from 'reactstrap';
 
 import Updates from "./updates";
 import Projects from "./projects";
@@ -8,43 +14,34 @@ import Docs from "./docs";
 import Links from "./links";
 import Contact from "./contact";
 
-class InactiveSession extends Component {
-
-  render() {
-    return (
-      <Nav pullRight>
-        <NavItem id="signupAnchor" onClick={this.props.displaySignupClicked} >
-          <Glyphicon glyph="user" /> Signup
-        </NavItem>
-        <NavItem id="loginAnchor" onClick={this.props.displayLoginClicked} >
-          <Glyphicon glyph="log-in" /> Login
-        </NavItem>
-      </Nav>
-    );
-  }
+function InactiveSession(props) {
+  return (
+    <Nav pullRight>
+      <NavItem id="signupAnchor" onClick={this.props.displaySignupClicked} >
+        <i class="fa user-plus" /> Signup</NavItem>
+      <NavItem id="loginAnchor" onClick={this.props.displayLoginClicked} >
+        <i class="fa sign-in-alt" /> Login</NavItem>
+    </Nav>
+  );
 }
 
-class ActiveSession extends Component {
-
-  render() {
-    return (
-      <Nav pullRight>
-        <NavItem id="homeAnchor" onClick={this.props.onClick} >
-          <Glyphicon glyph="home" /> Home
-        </NavItem>
-        <NavItem id="logoutAnchor" onClick={this.props.onClick} >
-          <Glyphicon glyph="log-out" /> Logout
-        </NavItem>
-      </Nav>
-    );
-  }
+function ActiveSession(props) {
+  return (
+    <Nav pullRight>
+      <NavItem id="homeAnchor" onClick={this.props.onClick} >
+        <i class="fa home" /> Home</NavItem>
+      <NavItem id="logoutAnchor" onClick={this.props.onClick} >
+        <i class="fa sign-out-alt" /> Logout</NavItem>
+     </Nav>
+  );
 }
 
 class NavBar extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {      
+    this.state = {  
+      isOpen: false,    
       defaultExpanded: true,
       collapseOnSelect: true
     };
@@ -57,21 +54,19 @@ class NavBar extends Component {
   handleDocsClick = () => { ReactDOM.render(<Docs />, document.getElementById("jumbotronRoot")); }
   handleLinksClick = () => { ReactDOM.render(<Links />, document.getElementById("jumbotronRoot")); }
   handleContactClick = () => { ReactDOM.render(<Contact />, document.getElementById("jumbotronRoot")); }
-
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen
+    });
+  }
   render() {
     
-    const popover = (
-      <Popover id="modal-popover" title="bug reports appreciated!">
-        Please, while browsing, take note of any bugs found and email them to me via the contact form!
-      </Popover>
-    );
     const isLoggedIn = this.props.isLoggedIn;
     let loginControl;
 
     if (isLoggedIn) {
       loginControl = 
-        <ActiveSession 
-          onClick={this.props.loginToggle} />;
+        <ActiveSession onClick={this.props.loginToggle} />;
     } else {
       loginControl = 
         <InactiveSession 
@@ -80,35 +75,23 @@ class NavBar extends Component {
     }
 
     return (
-      <Navbar fixedTop inverse fluid collapseOnSelect>
-        <Navbar.Header>
-          <Navbar.Brand>
-            <OverlayTrigger overlay={popover}>
-              <a><Image id="whiteSheep" src="../img/sheep.png" alt="whitesheep" /></a>
-            </OverlayTrigger>
-          </Navbar.Brand>
-          <Navbar.Toggle />
-        </Navbar.Header>
-        <Navbar.Collapse>
-          <Nav>
-            <NavItem onClick={this.handleUpdatesClick}>
-              Updates
-            </NavItem>
-            <NavItem onClick={this.handleProjectsClick}>
-              Projects
-            </NavItem>
-            <NavItem onClick={this.handleDocsClick}>
-              Documentation
-            </NavItem>
-            <NavItem onClick={this.handleLinksClick}>
-              Links
-            </NavItem>
-            <NavItem onClick={this.handleContactClick}>
-              Contact
-            </NavItem>
+      <Navbar  color="dark" dark expand="md">
+        <NavbarBrand>
+          {/* <OverlayTrigger overlay={popover}> */}
+            <a><image id="whiteSheep" src="../img/sheep.png" alt="whitesheep" /></a>
+          {/* </OverlayTrigger> */}
+        </NavbarBrand>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <Nav className="ml-auto" navbar>
+            <NavItem onClick={this.handleUpdatesClick}>Updates</NavItem>
+            <NavItem onClick={this.handleProjectsClick}>Projects</NavItem>
+            <NavItem onClick={this.handleDocsClick}>Documentation</NavItem>
+            <NavItem onClick={this.handleLinksClick}>Links</NavItem>
+            <NavItem onClick={this.handleContactClick}>Contact</NavItem>
           </Nav>
           {loginControl}
-        </Navbar.Collapse>
+        </Collapse>
       </Navbar>
     );
   }

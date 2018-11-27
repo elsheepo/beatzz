@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Routes from './Routes'
+
 import NavBar from './components/navbar'
 import Updates from './components/updates'
 import Footer from './components/footer'
