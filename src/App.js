@@ -7,8 +7,7 @@ import Privacy from './components/privacyModal';
 import Signup from './components/signupModal';
 import Login from './components/loginModal';
 
-class App extends Component {
-
+export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +16,7 @@ class App extends Component {
       displaySignup: false,
       displayPrivacy: false
     };
-  }
+  };
 
   loginToggle = () => {this.setState({isLoggedIn: !this.state.isLoggedIn})}
 
@@ -78,5 +77,3 @@ class App extends Component {
     );
   }
 }
-
-export default App;
