@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Image, Well } from 'react-bootstrap'
-import { Jumbotron } from 'reactstrap'
+import { Jumbotron, Card } from 'reactstrap'
 
 class Docs extends Component {
   render() {
@@ -8,15 +7,15 @@ class Docs extends Component {
       <React.Fragment>
         <Jumbotron>
           <div className="img-container">
-            <Image id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
+            <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
           </div>
           <p className="text-center text-primary varela-round">DOCUMENTATION</p>
-          <Well bsSize="large">
+          <Card>
             <div className="row">
               <div className="col-sm-2 align-items-center h-100">
                 <div className="img-container">
                   <a href="docs/Slackware%20Package%20Management.pdf">
-                    <Image id="docImg" src="./img/doc_icon.png" alt="document" />
+                    <img id="docImg" src="./img/doc_icon.png" alt="document" />
                   </a>
                 </div>  
               </div>
@@ -32,7 +31,7 @@ class Docs extends Component {
                 </p>
               </div>
             </div>  
-          </Well>
+          </Card>
         </Jumbotron>
       </React.Fragment>
     );

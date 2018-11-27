@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { Image, Form, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
+import { Form, FormGroup, FormControl, ControlLabel, HelpBlock } from 'react-bootstrap';
 import { Jumbotron, Card, CardBody, Button } from 'reactstrap';
 
 import Updates from "./updates";
@@ -82,7 +82,7 @@ class Contact extends Component {
         <Card>
         <Jumbotron className="text-center">
           <div className="img-container">
-            <Image id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
+            <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
           </div>
           <p className="text-center text-primary varela-round">CONTACT</p>
           <Card>

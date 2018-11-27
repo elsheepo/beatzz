@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { Image, Well } from 'react-bootstrap'
-import { Jumbotron } from 'reactstrap'
+import { Jumbotron, Card } from 'reactstrap'
 
 class Projects extends Component {
   render() {
@@ -8,14 +7,14 @@ class Projects extends Component {
       <React.Fragment>
         <Jumbotron>
           <div className="img-container">
-            <Image id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
+            <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
           </div>
           <p className="text-center text-primary varela-round"> PROJECTS </p>
-          <Well bsSize="large">
+          <Card>
             <div className="row">
               <div className="col-sm-2">
                 <div className="img-container">
-                  <a href="https://github.com/elsheepo/Convertron" rel="noopener noreferrer" target="_blank"><Image className="float-left" src="./img/convert.png" alt="Convertron" /></a>
+                  <a href="https://github.com/elsheepo/Convertron" rel="noopener noreferrer" target="_blank"><img className="float-left" src="./img/convert.png" alt="Convertron" /></a>
                 </div>
               </div>
               <div className="col-sm-10 text-left">
@@ -105,7 +104,7 @@ class Projects extends Component {
                 </p>
               </div>
             </div>   
-          </Well>
+          </Card>
         </Jumbotron>
       </React.Fragment>
     );

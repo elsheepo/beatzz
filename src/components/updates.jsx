@@ -9,7 +9,7 @@ class Updates extends Component {
         <Jumbotron>
           <div className="img-container">
             {/* <OverlayTrigger overlay={tooltip}> */}
-              <image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
+              <img id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
             {/* </OverlayTrigger> */}
           </div>
           <p className="text-primary varela-round">UPDATES</p>

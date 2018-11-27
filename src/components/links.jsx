@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Jumbotron, Image, Well } from 'react-bootstrap'
+import React, { Component } from 'react';
+import { Jumbotron, Card } from 'reactstrap';
 
 class Links extends Component {
   render() {
@@ -7,10 +7,10 @@ class Links extends Component {
       <React.Fragment>
         <Jumbotron>
           <div className="img-container">
-            <Image id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
+            <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
           </div>
           <p className="text-center text-primary varela-round">LINKS</p>
-          <Well bsSize="large" className="text-left">
+          <Card className="text-left">
             <p><a href="http://slackware.com" rel="noopener noreferrer" target="_blank"><u>slackware.com</u></a><br />
                   The official Slackware Linux website.</p>
 
@@ -49,7 +49,7 @@ class Links extends Component {
 
             <p><a href="https://openoffice.org/" rel="noopener noreferrer" target="_blank"><u>OpenOffice</u></a><br />
                   Open-Source office suite.</p>
-          </Well>
+          </Card>
         </Jumbotron>
       </React.Fragment>
     );
