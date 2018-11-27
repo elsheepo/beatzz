@@ -12,19 +12,22 @@ html {
 
 body {
   min-height: 100%;
-  margin: 0;
+  // margin: 0;
 }
 
 .wrapper {
   min-height: 100%;
-  margin-bottom: -60px;
+  margin-bottom: -50px;
+}
+.push {
+  height: 50px;
 }
 
-.wrapper:after {
-  content: "";
-  display: block;
-  height: 60px;
-}
+// .wrapper:after {
+//   content: "";
+//   display: block;
+//   height: 60px;
+// }
 
 .varela-round {
   font-family: 'Varela Round';

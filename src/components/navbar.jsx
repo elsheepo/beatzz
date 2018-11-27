@@ -66,10 +66,11 @@ class NavBar extends Component {
 
     if (isLoggedIn) {
       loginControl = 
-        <ActiveSession onClick={this.props.loginToggle} />;
+        <ActiveSession className="d-flex justify-content-end" onClick={this.props.loginToggle} />;
     } else {
       loginControl = 
         <InactiveSession 
+          className="d-flex justify-content-end"
           displayLoginClicked={this.props.displayLoginClicked} 
           displaySignupClicked={this.props.displaySignupClicked} />;
     }
@@ -82,13 +83,14 @@ class NavBar extends Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-            <NavItem className="pointer" onClick={this.handleUpdatesClick}>Updates</NavItem>
-            <NavItem className="pointer" onClick={this.handleProjectsClick}>Projects</NavItem>
-            <NavItem className="pointer" onClick={this.handleDocsClick}>Documentation</NavItem>
-            <NavItem className="pointer" onClick={this.handleLinksClick}>Links</NavItem>
-            <NavItem className="pointer" onClick={this.handleContactClick}>Contact</NavItem>
+              <NavItem className="pointer" onClick={this.handleUpdatesClick}>Updates</NavItem>
+              <NavItem className="pointer" onClick={this.handleProjectsClick}>Projects</NavItem>
+              <NavItem className="pointer" onClick={this.handleDocsClick}>Documentation</NavItem>
+              <NavItem className="pointer" onClick={this.handleLinksClick}>Links</NavItem>
+              <NavItem className="pointer" onClick={this.handleContactClick}>Contact</NavItem>
           </Nav>
           {loginControl}
+          
         </Collapse>
       </Navbar>
     );

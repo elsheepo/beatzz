@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
-import NavBar from './components/navbar'
-import Updates from './components/updates'
-import Footer from './components/footer'
-import Privacy from './components/privacyModal'
-import Signup from './components/signupModal'
-import Login from './components/loginModal'
+import NavBar from './components/navbar';
+import Updates from './components/updates';
+import Footer from './components/footer';
+import Privacy from './components/privacyModal';
+import Signup from './components/signupModal';
+import Login from './components/loginModal';
 
 class App extends Component {
 
@@ -71,9 +71,9 @@ class App extends Component {
           </div>
         </div>
         <div id="footerRoot">
-          <Footer
-            displayPrivacyClicked={this.displayPrivacyHandler} />
+          <Footer displayPrivacyClicked={this.displayPrivacyHandler} />
         </div>
+        <div className="push"></div>
       </React.Fragment>
     );
   }
