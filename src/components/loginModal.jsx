@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
-import { Modal, Image, Tooltip, OverlayTrigger } from 'react-bootstrap'
-import LoginForm from './loginForm'
+import React, { Component } from "react";
+import { Modal } from "reactstrap";
+import LoginForm from "./loginForm";
 
 class Login extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       show: this.props.display
     };
   }
-  
+
   componentDidUpdate(prevProps) {
     if (prevProps.display !== this.props.display) {
-      this.setState({          
+      this.setState({
         show: this.props.display
       });
     }
@@ -21,10 +20,9 @@ class Login extends Component {
 
   render() {
     const display = this.state.show;
-    const tooltip = <Tooltip id="modal-tooltip">bah...</Tooltip>;
     return (
       <React.Fragment>
-        <Modal 
+        <Modal
           bsSize="large"
           backdrop="static"
           show={display}
@@ -35,10 +33,19 @@ class Login extends Component {
         >
           <Modal.Header>
             <div className="img-container text-center">
-              <span className="close" title="Close Modal" onClick={this.props.handleHide}>&times;</span>
-              <OverlayTrigger overlay={tooltip}>
-                <Image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
-              </OverlayTrigger>
+              <span
+                className="close"
+                title="Close Modal"
+                onClick={this.props.handleHide}
+              >
+                &times;
+              </span>
+
+              <img
+                id="blacksheep"
+                src="./img/blacksheep.png"
+                alt="blacksheep"
+              />
             </div>
             <p className="text-primary text-center varela-round">LOGIN</p>
           </Modal.Header>

@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
-import { Modal, Image } from 'react-bootstrap'
-import SignupForm from './signupForm'
+import React, { Component } from "react";
+import { Modal } from "reactstrap";
+import SignupForm from "./signupForm";
 
 class Signup extends Component {
-
   constructor(props, content) {
     super(props, content);
     this.state = {
@@ -13,28 +12,38 @@ class Signup extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.display !== this.props.display) {
-      this.setState({          
+      this.setState({
         show: this.props.display
       });
     }
   }
-  
+
   render() {
-    const display = this.state.show;    
+    const display = this.state.show;
     return (
       <React.Fragment>
-        <Modal 
+        <Modal
           bsSize="large"
           show={display}
-          onHide={this.props.handleHide} 
+          onHide={this.props.handleHide}
           container={this}
           aria-labelledby="contained-modal-title-lg"
           dialogClassName=""
         >
           <Modal.Header>
             <div className="img-container text-center">
-              <span className="close" title="Close Modal" onClick={this.props.handleHide}>&times;</span>
-                <Image id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
+              <span
+                className="close"
+                title="Close Modal"
+                onClick={this.props.handleHide}
+              >
+                &times;
+              </span>
+              <img
+                id="blacksheep"
+                src="./img/blacksheep.png"
+                alt="blacksheep"
+              />
             </div>
             <p className="text-primary text-center varela-round">SIGNUP</p>
           </Modal.Header>

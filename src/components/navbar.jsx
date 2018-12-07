@@ -1,28 +1,33 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from "react";
 import {
   Collapse,
   Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem, } from 'reactstrap';
-  import FontAwesome from "react-fontawesome";
-
-import Updates from "./updates";
-import Projects from "./projects";
-import Docs from "./docs";
-import Links from "./links";
-import Contact from "./contact";
-
+  NavItem,
+  NavLink
+} from "reactstrap";
+import FontAwesome from "react-fontawesome";
+import { Link } from "react-router-dom";
 
 function InactiveSession(props) {
   return (
     <Nav>
-      <NavItem id="signupAnchor" className="pointer" onClick={props.displaySignupClicked}>
-        <FontAwesome name='user-plus' /> Signup</NavItem>
-      <NavItem id="loginAnchor" className="pointer" onClick={props.displayLoginClicked}>
-        <FontAwesome name='sign-in' /> Login</NavItem>
+      <NavItem
+        id="signupAnchor"
+        className="pointer"
+        onClick={props.displaySignupClicked}
+      >
+        <FontAwesome name="user-plus" /> Signup
+      </NavItem>
+      <NavItem
+        id="loginAnchor"
+        className="pointer"
+        onClick={props.displayLoginClicked}
+      >
+        <FontAwesome name="sign-in" /> Login
+      </NavItem>
     </Nav>
   );
 }
@@ -31,18 +36,20 @@ function ActiveSession(props) {
   return (
     <Nav>
       <NavItem id="homeAnchor" className="pointer" onClick={props.onClick}>
-        <FontAwesome name='home' /> Home</NavItem>
+        <FontAwesome name="home" /> Home
+      </NavItem>
       <NavItem id="logoutAnchor" className="pointer" onClick={props.onClick}>
-        <FontAwesome name='sign-out' /> Logout</NavItem>
-     </Nav>
+        <FontAwesome name="sign-out" /> Logout
+      </NavItem>
+    </Nav>
   );
 }
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {  
-      isOpen: false,    
+    this.state = {
+      isOpen: false,
       defaultExpanded: true,
       collapseOnSelect: true
     };
@@ -51,28 +58,27 @@ class NavBar extends Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-  }
-  
-  handleUpdatesClick = () => { ReactDOM.render(<Updates />, document.getElementById("jumbotronRoot")); }
-  handleProjectsClick = () => { ReactDOM.render(<Projects />, document.getElementById("jumbotronRoot")); }
-  handleDocsClick = () => { ReactDOM.render(<Docs />, document.getElementById("jumbotronRoot")); }
-  handleLinksClick = () => { ReactDOM.render(<Links />, document.getElementById("jumbotronRoot")); }
-  handleContactClick = () => { ReactDOM.render(<Contact />, document.getElementById("jumbotronRoot")); }
+  };
 
   render() {
-    
     const isLoggedIn = this.props.isLoggedIn;
     let loginControl;
 
     if (isLoggedIn) {
-      loginControl = 
-        <ActiveSession className="d-flex justify-content-end" onClick={this.props.loginToggle} />;
-    } else {
-      loginControl = 
-        <InactiveSession 
+      loginControl = (
+        <ActiveSession
           className="d-flex justify-content-end"
-          displayLoginClicked={this.props.displayLoginClicked} 
-          displaySignupClicked={this.props.displaySignupClicked} />;
+          onClick={this.props.loginToggle}
+        />
+      );
+    } else {
+      loginControl = (
+        <InactiveSession
+          className="d-flex justify-content-end"
+          displayLoginClicked={this.props.displayLoginClicked}
+          displaySignupClicked={this.props.displaySignupClicked}
+        />
+      );
     }
 
     return (
@@ -83,14 +89,33 @@ class NavBar extends Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
-              <NavItem className="pointer" onClick={this.handleUpdatesClick}>Updates</NavItem>
-              <NavItem className="pointer" onClick={this.handleProjectsClick}>Projects</NavItem>
-              <NavItem className="pointer" onClick={this.handleDocsClick}>Documentation</NavItem>
-              <NavItem className="pointer" onClick={this.handleLinksClick}>Links</NavItem>
-              <NavItem className="pointer" onClick={this.handleContactClick}>Contact</NavItem>
+            <NavItem className="pointer">
+              <NavLink>
+                <Link to="/">Updates</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem className="pointer">
+              <NavLink>
+                <Link to="/projects">Projects</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem className="pointer">
+              <NavLink>
+                <Link to="/docs">Documentation</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem className="pointer">
+              <NavLink>
+                <Link to="/links">Links</Link>
+              </NavLink>
+            </NavItem>
+            <NavItem className="pointer">
+              <NavLink>
+                <Link to="/contact">Contact</Link>
+              </NavLink>
+            </NavItem>
           </Nav>
           {loginControl}
-          
         </Collapse>
       </Navbar>
     );

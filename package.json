@@ -10,13 +10,10 @@
     "bootstrap": "^4.1.3",
     "node-sass": "^4.10.0",
     "react": "^16.7.0-alpha.2",
-    "react-bootstrap": "^0.32.4",
-    "react-bootstrap-validation": "^0.1.11",
     "react-dom": "^16.7.0-alpha.2",
     "react-fontawesome": "^1.6.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.0.4",
-    "react-sticky-footer": "0.1.0-rc3",
     "reactstrap": "^6.5.0"
   },
   "devDependencies": {
