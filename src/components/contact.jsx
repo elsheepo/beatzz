@@ -88,71 +88,69 @@ class Contact extends Component {
   render() {
     return (
       <React.Fragment>
-        <Card>
-          <Jumbotron className="text-center">
-            <div className="img-container">
-              <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
-            </div>
-            <p className="text-center text-primary varela-round">CONTACT</p>
-            <Card>
-              <CardBody>
-                <Form>
-                  <FormGroup
-                    controlId="contactName"
-                    validationState={this.validateName()}
-                  >
-                    <Label>Name</Label>
-                    <Input
-                      name="name"
-                      type="text"
-                      value={this.state.name}
-                      onChange={this.handleChange}
-                      onBlur={this.handleBlur("name")}
-                    />
-                    <FormFeedback />
-                  </FormGroup>
-                  <FormGroup
-                    controlId="contactEmail"
-                    validationState={this.validateEmail()}
-                  >
-                    <Label>Email Address</Label>
-                    <Input
-                      name="email"
-                      type="text"
-                      value={this.state.email}
-                      onChange={this.handleChange}
-                      onBlur={this.handleBlur("email")}
-                    />
-                    <FormFeedback />
-                  </FormGroup>
-                  <FormGroup
-                    controlId="contactMessage"
-                    validationState={this.validateMessage()}
-                  >
-                    <Label>Message</Label>
-                    <Input
-                      name="message"
-                      componentClass="textarea"
-                      rows="5"
-                      value={this.state.message}
-                      onChange={this.handleChange}
-                      onBlur={this.handleBlur("message")}
-                    />
-                    <FormFeedback />
-                  </FormGroup>
-                  <br />
-                  <br />
-                  <div className="text-right">
-                    <Button>
-                      <Link to="/">Cancel</Link>
-                    </Button>
-                    <Button className="primary-btn">Send</Button>
-                  </div>
-                </Form>
-              </CardBody>
-            </Card>
-          </Jumbotron>
-        </Card>
+        <Jumbotron className="text-center">
+          <div className="img-container">
+            <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
+          </div>
+          <p className="text-center text-primary varela-round">CONTACT</p>
+          <Card>
+            <CardBody>
+              <Form>
+                <FormGroup
+                  controlId="contactName"
+                  validationState={this.validateName()}
+                >
+                  <Label>Name</Label>
+                  <Input
+                    name="name"
+                    type="text"
+                    value={this.state.name}
+                    onChange={this.handleChange}
+                    onBlur={this.handleBlur("name")}
+                  />
+                  <FormFeedback />
+                </FormGroup>
+                <FormGroup
+                  controlId="contactEmail"
+                  validationState={this.validateEmail()}
+                >
+                  <Label>Email Address</Label>
+                  <Input
+                    name="email"
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.handleChange}
+                    onBlur={this.handleBlur("email")}
+                  />
+                  <FormFeedback />
+                </FormGroup>
+                <FormGroup
+                  controlId="contactMessage"
+                  validationState={this.validateMessage()}
+                >
+                  <Label>Message</Label>
+                  <Input
+                    name="message"
+                    componentClass="textarea"
+                    rows="5"
+                    value={this.state.message}
+                    onChange={this.handleChange}
+                    onBlur={this.handleBlur("message")}
+                  />
+                  <FormFeedback />
+                </FormGroup>
+                <br />
+                <br />
+                <div className="text-right">
+                  <Button>
+                    <Link to="/">Cancel</Link>
+                  </Button>
+                  <Button className="primary-btn">Send</Button>
+                </div>
+              </Form>
+            </CardBody>
+          </Card>
+        </Jumbotron>
       </React.Fragment>
     );
   }
