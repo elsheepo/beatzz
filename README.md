@@ -18,4 +18,8 @@ This project began in November 2017 with the simple goal of self learning front-
 - "react-scripts": "2.0.4",
 - "reactstrap": "^6.5.0"
 
+## Check it out!
+
+you can view the current progress on my server at https://www.beatzz.co/
+
 ![](https://github.com/elsheepo/beatzz.co/blob/master/src/img/Capture.PNG?raw=true)
