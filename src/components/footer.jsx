@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const footerStyle = {
   backgroundColor: "#343a40",
@@ -25,10 +26,20 @@ const phantomStyle = {
 export default class Footer extends React.Component {
   render() {
     return (
-      <div>
+      <footer>
         <div style={phantomStyle} />
-        <div style={footerStyle}><p>&copy; 2017-2018 beatzz.co <a className="pointer" onClick={this.props.displayPrivacyClicked}>Terms & Privacy</a></p></div>
-      </div>
+        <div style={footerStyle}>
+          <p>
+            &copy; 2017-2018 beatzz.co{" "}
+            <a className="pointer" onClick={this.props.displayPrivacyClicked}>
+              Terms & Privacy
+            </a>
+          </p>
+        </div>
+      </footer>
     );
   }
 }
+Footer.propTypes = {
+  displayPrivacyClicked: PropTypes.func
+};

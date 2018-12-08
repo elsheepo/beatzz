@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-class Contact extends Component {
+export default class Contact extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -155,5 +155,3 @@ class Contact extends Component {
     );
   }
 }
-
-export default Contact;

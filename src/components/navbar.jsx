@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import {
   Collapse,
   Navbar,
@@ -31,6 +32,10 @@ function InactiveSession(props) {
     </Nav>
   );
 }
+InactiveSession.propTypes = {
+  displaySignupClicked: PropTypes.func,
+  displayLoginClicked: PropTypes.func
+};
 
 function ActiveSession(props) {
   return (
@@ -44,8 +49,11 @@ function ActiveSession(props) {
     </Nav>
   );
 }
+ActiveSession.propTypes = {
+  onClick: PropTypes.bool
+};
 
-class NavBar extends Component {
+export default class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -121,5 +129,9 @@ class NavBar extends Component {
     );
   }
 }
-
-export default NavBar;
+NavBar.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  loginToggle: PropTypes.func,
+  displayLoginClicked: PropTypes.func,
+  displaySignupClicked: PropTypes.func
+};

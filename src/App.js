@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Container, Row, Col } from "reactstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import NavBar from "./components/navbar";
@@ -57,53 +58,45 @@ export default class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <div className="wrapper">
-            <div id="navbarRoot">
-              <NavBar
-                isLoggedIn={isLoggedIn}
-                loginToggle={this.loginToggle}
-                displayLoginClicked={this.displayLoginHandler}
-                displaySignupClicked={this.displaySignupHandler}
-              />
-            </div>
-            <div id="loginRoot">
-              <Login
-                display={displayLoginModal}
-                handleHide={this.hideLoginHandler}
-              />
-            </div>
-            <div id="signupRoot">
-              <Signup
-                display={displaySignupModal}
-                handleHide={this.hideSignupHandler}
-              />
-            </div>
-            <div id="privacyRoot">
-              <Privacy
-                display={displayPrivacyModal}
-                handleHide={this.hidePrivacyHandler}
-              />
-            </div>
-            <div className="container-fluid text-center">
-              <div className="row">
-                <div className="col-sm-2" id="leftPanelRoot" />
-                <div className="col-sm-8">
-                  <div id="jumbotronRoot">
-                    <Route path="/contact" component={Contact} />
-                    <Route path="/docs" component={Docs} />
-                    <Route path="/links" component={Links} />
-                    <Route path="/projects" component={Projects} />
-                    <Route path="/" exact component={Updates} />
-                  </div>
-                </div>
-                <div className="col-sm-2" id="rightPanelRoot" />
-              </div>
-            </div>
+          <NavBar
+            isLoggedIn={isLoggedIn}
+            loginToggle={this.loginToggle}
+            displayLoginClicked={this.displayLoginHandler}
+            displaySignupClicked={this.displaySignupHandler}
+          />
+          <Container>
+            <Row>
+              <Col />
+              <Col className="text-center" sm="14" xl="12">
+                <Route path="/contact" component={Contact} />
+                <Route path="/docs" component={Docs} />
+                <Route path="/links" component={Links} />
+                <Route path="/projects" component={Projects} />
+                <Route path="/" exact component={Updates} />
+              </Col>
+              <Col />
+            </Row>
+          </Container>
+          <Footer displayPrivacyClicked={this.displayPrivacyHandler} />
+
+          <div id="loginRoot">
+            <Login
+              display={displayLoginModal}
+              handleHide={this.hideLoginHandler}
+            />
           </div>
-          <div id="footerRoot">
-            <Footer displayPrivacyClicked={this.displayPrivacyHandler} />
+          <div id="signupRoot">
+            <Signup
+              display={displaySignupModal}
+              handleHide={this.hideSignupHandler}
+            />
           </div>
-          <div className="push" />
+          <div id="privacyRoot">
+            <Privacy
+              display={displayPrivacyModal}
+              handleHide={this.hidePrivacyHandler}
+            />
+          </div>
         </React.Fragment>
       </Router>
     );
