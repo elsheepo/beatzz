@@ -1,33 +1,29 @@
 import React, { Component } from "react";
-import { Card, Modal } from "reactstrap";
+import { Card, Modal, ModalHeader, ModalBody } from "reactstrap";
+import PropTypes from "prop-types";
 
-class Privacy extends Component {
+export default class Privacy extends Component {
   constructor(props) {
     super(props);
-    this.state = { show: this.props.display };
+    this.state = { modal: this.props.displayPrivacy };
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.display !== this.props.display) {
-      this.setState({
-        show: this.props.display
-      });
-    }
-  }
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
   render() {
-    const display = this.state.show;
     return (
       <React.Fragment>
         <Modal
-          bsSize="large"
-          show={display}
-          onHide={this.props.handleHide}
-          container={this}
-          aria-labelledby="contained-modal-title-lg"
-          dialogClassName=""
+          isOpen={this.state.modal}
+          toggle={this.toggle}
+          className={this.props.className}
+          size="lg"
         >
-          <Modal.Header>
+          <ModalHeader>
             <div className="img-container text-center">
               <span
                 className="close"
@@ -45,8 +41,8 @@ class Privacy extends Component {
             <p className="text-primary text-center varela-round">
               TERMS & PRIVACY
             </p>
-          </Modal.Header>
-          <Modal.Body>
+          </ModalHeader>
+          <ModalBody>
             <Card>
               <p>
                 <b>Privacy Notice</b>
@@ -220,11 +216,15 @@ class Privacy extends Component {
                 this site.
               </p>
             </Card>
-          </Modal.Body>
+          </ModalBody>
         </Modal>
       </React.Fragment>
     );
   }
 }
 
-export default Privacy;
+Privacy.propTypes = {
+  displayPrivacy: PropTypes.bool,
+  className: PropTypes.string,
+  handleHide: PropTypes.func
+};

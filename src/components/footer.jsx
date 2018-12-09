@@ -31,7 +31,7 @@ export default class Footer extends React.Component {
         <div style={footerStyle}>
           <p>
             &copy; 2017-2018 beatzz.co{" "}
-            <a className="pointer" onClick={this.props.displayPrivacyClicked}>
+            <a className="pointer" onClick={this.props.displayPrivacy}>
               Terms & Privacy
             </a>
           </p>
@@ -41,5 +41,5 @@ export default class Footer extends React.Component {
   }
 }
 Footer.propTypes = {
-  displayPrivacyClicked: PropTypes.func
+  displayPrivacy: PropTypes.func
 };

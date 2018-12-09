@@ -77,7 +77,7 @@ export default class App extends Component {
               <Col />
             </Row>
           </Container>
-          <Footer displayPrivacyClicked={this.displayPrivacyHandler} />
+          <Footer displayPrivacy={this.displayPrivacyHandler} />
 
           <div id="loginRoot">
             <Login
@@ -93,7 +93,7 @@ export default class App extends Component {
           </div>
           <div id="privacyRoot">
             <Privacy
-              display={displayPrivacyModal}
+              displayPrivacy={displayPrivacyModal}
               handleHide={this.hidePrivacyHandler}
             />
           </div>
