@@ -1,37 +1,28 @@
 import React, { Component } from "react";
-import { Modal } from "reactstrap";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import PropTypes from "prop-types";
 import LoginForm from "./loginForm";
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
+export default class Login extends Component {
+  constructor(props, content) {
+    super(props, content);
     this.state = {
-      show: this.props.display
+      modal: this.props.display
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.display !== this.props.display) {
-      this.setState({
-        show: this.props.display
-      });
-    }
-  }
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
   render() {
     const display = this.state.show;
     return (
       <React.Fragment>
-        <Modal
-          bsSize="large"
-          backdrop="static"
-          show={display}
-          onHide={this.props.handleHide}
-          container={this}
-          aria-labelledby="contained-modal-title-lg"
-          dialogClassName=""
-        >
-          <Modal.Header>
+        <Modal isOpen={this.props.display} toggle={this.toggle} size="lg">
+          <ModalHeader>
             <div className="img-container text-center">
               <span
                 className="close"
@@ -48,14 +39,18 @@ class Login extends Component {
               />
             </div>
             <p className="text-primary text-center varela-round">LOGIN</p>
-          </Modal.Header>
-          <Modal.Body>
+          </ModalHeader>
+          <ModalBody>
             <LoginForm handleHide={this.props.handleHide} />
-          </Modal.Body>
+          </ModalBody>
         </Modal>
       </React.Fragment>
     );
   }
 }
 
-export default Login;
+Login.propTypes = {
+  display: PropTypes.bool,
+  className: PropTypes.string,
+  handleHide: PropTypes.func
+};

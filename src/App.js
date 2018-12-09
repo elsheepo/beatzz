@@ -79,24 +79,20 @@ export default class App extends Component {
           </Container>
           <Footer displayPrivacy={this.displayPrivacyHandler} />
 
-          <div id="loginRoot">
-            <Login
-              display={displayLoginModal}
-              handleHide={this.hideLoginHandler}
-            />
-          </div>
-          <div id="signupRoot">
-            <Signup
-              display={displaySignupModal}
-              handleHide={this.hideSignupHandler}
-            />
-          </div>
-          <div id="privacyRoot">
-            <Privacy
-              displayPrivacy={displayPrivacyModal}
-              handleHide={this.hidePrivacyHandler}
-            />
-          </div>
+          <Login
+            display={displayLoginModal}
+            handleHide={this.hideLoginHandler}
+          />
+
+          <Signup
+            display={displaySignupModal}
+            handleHide={this.hideSignupHandler}
+          />
+
+          <Privacy
+            display={displayPrivacyModal}
+            handleHide={this.hidePrivacyHandler}
+          />
         </React.Fragment>
       </Router>
     );

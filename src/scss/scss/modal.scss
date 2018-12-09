@@ -1,7 +1,6 @@
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto 8% auto; /* 5% from the top, 15% from the bottom and centered */
-  // border: 1px solid #888;
   width: 100%; /* Could be more or less, depending on screen size */
 }
 .close {
@@ -18,17 +17,18 @@
   cursor: pointer;
 }
 @media screen and (min-width: 992px) {
+  .modal-lg {
+    max-width: 80%;
+  }
   .modal-content {
     margin: 5% auto 15% auto;
     width: 60%;
-  }
-  .modal-lg {
-    width: 100%;
   }
 }
 .modal-container {
   position: relative;
 }
-.modal-container .modal, .modal-container .modal-backdrop {
+.modal-container .modal,
+.modal-container .modal-backdrop {
   position: absolute;
 }

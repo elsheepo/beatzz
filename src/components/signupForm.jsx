@@ -7,8 +7,9 @@ import {
   FormFeedback,
   Button
 } from "reactstrap";
+import PropTypes from "prop-types";
 
-class SignupForm extends Component {
+export default class SignupForm extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -123,20 +124,6 @@ class SignupForm extends Component {
         </FormGroup>
 
         <FormGroup
-          controlId="username"
-          validationState={this.validateUsernameLength()}
-        >
-          <Label>username</Label>
-          <Input
-            name="username"
-            type="text"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <FormFeedback />
-        </FormGroup>
-
-        <FormGroup
           controlId="password"
           validationState={this.validatePassword()}
         >
@@ -183,4 +170,6 @@ class SignupForm extends Component {
   }
 }
 
-export default SignupForm;
+SignupForm.propTypes = {
+  handleHide: PropTypes.func
+};

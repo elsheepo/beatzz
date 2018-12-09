@@ -96,7 +96,7 @@ export default class NavBar extends Component {
         </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="mr-auto" navbar>
             <NavItem className="pointer">
               <NavLink>
                 <Link to="/">Updates</Link>

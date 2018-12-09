@@ -12,30 +12,19 @@ html {
 
 body {
   min-height: 100%;
-  // margin: 0;
 }
-
-.wrapper {
-  min-height: 100%;
-  margin-bottom: -50px;
-}
-.push {
-  height: 50px;
-}
-
-// .wrapper:after {
-//   content: "";
-//   display: block;
-//   height: 60px;
-// }
 
 .varela-round {
-  font-family: 'Varela Round';
+  font-family: "Varela Round";
 }
 
 .row {
-	margin-left: 0;
-	margin-right: 0;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.card {
+  padding: 5px;
 }
 
 .jumbotron {

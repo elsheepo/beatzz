@@ -5,7 +5,9 @@ import PropTypes from "prop-types";
 export default class Privacy extends Component {
   constructor(props) {
     super(props);
-    this.state = { modal: this.props.displayPrivacy };
+    this.state = {
+      modal: this.props.display
+    };
   }
 
   toggle = () => {
@@ -17,12 +19,7 @@ export default class Privacy extends Component {
   render() {
     return (
       <React.Fragment>
-        <Modal
-          isOpen={this.state.modal}
-          toggle={this.toggle}
-          className={this.props.className}
-          size="lg"
-        >
+        <Modal isOpen={this.props.display} toggle={this.toggle} size="lg">
           <ModalHeader>
             <div className="img-container text-center">
               <span
@@ -224,7 +221,7 @@ export default class Privacy extends Component {
 }
 
 Privacy.propTypes = {
-  displayPrivacy: PropTypes.bool,
+  display: PropTypes.bool,
   className: PropTypes.string,
   handleHide: PropTypes.func
 };

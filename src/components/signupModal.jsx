@@ -1,36 +1,27 @@
 import React, { Component } from "react";
-import { Modal } from "reactstrap";
+import { Modal, ModalHeader, ModalBody } from "reactstrap";
+import PropTypes from "prop-types";
 import SignupForm from "./signupForm";
 
-class Signup extends Component {
+export default class Signup extends Component {
   constructor(props, content) {
     super(props, content);
     this.state = {
-      show: false
+      modal: this.props.display
     };
   }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.display !== this.props.display) {
-      this.setState({
-        show: this.props.display
-      });
-    }
-  }
+  toggle = () => {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
   render() {
-    const display = this.state.show;
     return (
       <React.Fragment>
-        <Modal
-          bsSize="large"
-          show={display}
-          onHide={this.props.handleHide}
-          container={this}
-          aria-labelledby="contained-modal-title-lg"
-          dialogClassName=""
-        >
-          <Modal.Header>
+        <Modal isOpen={this.props.display} toggle={this.toggle} size="lg">
+          <ModalHeader>
             <div className="img-container text-center">
               <span
                 className="close"
@@ -46,14 +37,18 @@ class Signup extends Component {
               />
             </div>
             <p className="text-primary text-center varela-round">SIGNUP</p>
-          </Modal.Header>
-          <Modal.Body>
+          </ModalHeader>
+          <ModalBody>
             <SignupForm handleHide={this.props.handleHide} />
-          </Modal.Body>
+          </ModalBody>
         </Modal>
       </React.Fragment>
     );
   }
 }
 
-export default Signup;
+Signup.propTypes = {
+  display: PropTypes.bool,
+  className: PropTypes.string,
+  handleHide: PropTypes.func
+};
