@@ -11,6 +11,7 @@ This project began in November 2017 with the simple goal of self learning front-
 - "availity-reactstrap-validation": "^2.3.3",
 - "bootstrap": "^4.1.3",
 - "node-sass": "^4.10.0",
+- "prop-types": "^15.6.2",
 - "react": "^16.7.0-alpha.2",
 - "react-dom": "^16.7.0-alpha.2",
 - "react-fontawesome": "^1.6.1",
