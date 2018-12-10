@@ -78,17 +78,14 @@ export default class App extends Component {
             </Row>
           </Container>
           <Footer displayPrivacy={this.displayPrivacyHandler} />
-
           <Login
             display={displayLoginModal}
             handleHide={this.hideLoginHandler}
           />
-
           <Signup
             display={displaySignupModal}
             handleHide={this.hideSignupHandler}
           />
-
           <Privacy
             display={displayPrivacyModal}
             handleHide={this.hidePrivacyHandler}
