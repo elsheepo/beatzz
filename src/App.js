@@ -84,6 +84,7 @@ export default class App extends Component {
           />
           <Signup
             display={displaySignupModal}
+            displayPrivacy={displayPrivacyModal}
             handleHide={this.hideSignupHandler}
           />
           <Privacy

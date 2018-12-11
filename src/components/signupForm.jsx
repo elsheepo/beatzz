@@ -1,175 +1,105 @@
 import React, { Component } from "react";
+import { FormGroup, Button } from "reactstrap";
 import {
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  FormFeedback,
-  Button
-} from "reactstrap";
+  AvForm,
+  AvField,
+  AvGroup,
+  AvInput
+} from "availity-reactstrap-validation";
 import PropTypes from "prop-types";
+import _debounce from "lodash.debounce";
 
 export default class SignupForm extends Component {
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
-      firstName: "",
-      lastName: "",
-      email: "",
-      username: "",
-      password: "",
-      repeatPassword: "",
-      agreed: false,
-      isValid: false
+      password1: ""
     };
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  handleCheckboxChange = e => {
-    this.setState({ agreed: !this.state.agreed });
-  };
-
-  validateFirstNameLength() {
-    const length = this.state.firstName.length;
-    if (length > 0) return "success";
-    return null;
-  }
-
-  validateLastNameLength() {
-    const length = this.state.lastName.length;
-    if (length > 0) return "success";
-    return null;
-  }
-
-  validateEmail() {
-    const email = this.state.email;
-    const length = this.state.email.length;
-    if (length === 0) return null;
-    else if (length > 0 && !email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
-      return "warning";
-    else if (email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i))
-      return "success";
-    return null;
-  }
-
-  validateUsernameLength() {
-    const length = this.state.username.length;
-    if (length > 0 && length < 13) return "success";
-    else if (length > 12) return "error";
-    return null;
-  }
-
-  validatePassword() {
-    const length = this.state.password.length;
-    if (length >= 8) return "success";
-    else if (length > 0 && length < 8) return "warning";
-    return null;
-  }
-
-  validatePasswordRepeat() {
-    const firstEntry = this.state.password;
-    const secondEntry = this.state.repeatPassword;
-    if (secondEntry.length > 0 && secondEntry === firstEntry) return "success";
-    return null;
-  }
-
-  validateAgreement() {
-    const agreed = this.state.agreed;
-    if (agreed) return "success";
-    return null;
-  }
+  // debounce to not pound the 'server'
+  validate = _debounce((value, ctx, input, cb) => {
+    // cancel pending 'network call'
+    clearTimeout(this.timeout);
+    // simulate network call
+    this.timeout = setTimeout(() => {
+      cb(value === "");
+    }, 500);
+  }, 300);
 
   render() {
     return (
-      <Form>
-        <FormGroup
-          controlId="firstName"
-          validationState={this.validateFirstNameLength()}
-        >
-          <Label>first name</Label>
-          <Input
-            name="firstName"
-            type="text"
-            value={this.state.firstName}
-            onChange={this.handleChange}
-          />
-          <FormFeedback />
-        </FormGroup>
-
-        <FormGroup
-          controlId="lastName"
-          validationState={this.validateLastNameLength()}
-        >
-          <Label>last name</Label>
-          <Input
-            name="lastName"
-            type="text"
-            value={this.state.lastName}
-            onChange={this.handleChange}
-          />
-          <FormFeedback />
-        </FormGroup>
-
-        <FormGroup controlId="email" validationState={this.validateEmail()}>
-          <Label>email</Label>
-          <Input
-            name="email"
-            type="email"
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-          <FormFeedback />
-        </FormGroup>
-
-        <FormGroup
-          controlId="password"
-          validationState={this.validatePassword()}
-        >
-          <Label>password</Label>
-          <Input
-            name="password"
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <FormFeedback />
-        </FormGroup>
-
-        <FormGroup
-          controlId="repeatPassword"
-          validationState={this.validatePasswordRepeat()}
-        >
-          <Label>repeat password</Label>
-          <Input
-            name="repeatPassword"
-            type="password"
-            value={this.state.repeatPassword}
-            onChange={this.handleChange}
-          />
-          <FormFeedback />
-        </FormGroup>
-        <Input
-          type="checkbox"
-          name="agreed"
-          validationState={this.validateAgreement()}
-          onChange={this.handleCheckboxChange}
-        >
-          You must agree with our Terms and Privacy Conditions
-        </Input>
+      <AvForm>
+        <AvField
+          name="firstName"
+          label="first name"
+          type="text"
+          errorMessage="required"
+          validate={{
+            required: { value: true }
+          }}
+        />
+        <AvField
+          name="lastName"
+          label="last name"
+          type="text"
+          errorMessage="required"
+          validate={{
+            required: { value: true }
+          }}
+        />
+        <AvField
+          name="email"
+          label="email"
+          type="email"
+          errorMessage="Invalid email"
+          validate={{
+            required: { value: true }
+          }}
+        />
+        <AvField
+          name="password1"
+          label="password"
+          type="password"
+          validate={{
+            required: {
+              value: true,
+              errorMessage: "Please enter your password"
+            },
+            minLength: {
+              value: 8,
+              errorMessage: "Your name must be at least 8 characters"
+            }
+          }}
+        />
+        <AvField
+          name="password2"
+          label="password"
+          type="password"
+          validate={{ async: this.validate }}
+        />
+        <AvGroup check>
+          <AvInput type="checkbox" name="checkItOut" required />
+          <p>
+            {"Agree to the "}
+            <a href="" onClick={this.props.displayPrivacy}>
+              terms and conditions
+            </a>
+          </p>
+        </AvGroup>
         <hr />
         <div className="text-right">
-          <Button onClick={this.props.handleHide}>cancel</Button>
-          <Button bsStyle="primary" type="submit" disabled>
-            signup
-          </Button>
+          <FormGroup>
+            <Button onClick={this.props.handleHide}>cancel</Button>
+            <Button color="primary">Submit</Button>
+          </FormGroup>
         </div>
-      </Form>
+      </AvForm>
     );
   }
 }
 
 SignupForm.propTypes = {
-  handleHide: PropTypes.func
+  handleHide: PropTypes.func,
+  displayPrivacy: PropTypes.bool
 };

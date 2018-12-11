@@ -1,38 +1,41 @@
 import React, { Component } from "react";
-import {
-  AvForm,
-  AvGroup,
-  AvInput,
-  AvFeedback
-} from "availity-reactstrap-validation";
-import { Button, FormGroup, Label } from "reactstrap";
+import { Button, FormGroup } from "reactstrap";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 import PropTypes from "prop-types";
 
 export default class LoginForm extends Component {
   render() {
     return (
       <AvForm>
-        <AvGroup>
-          <Label for="email">email</Label>
-          <AvInput name="email" id="email" type="email" required />
-          <AvFeedback>please enter email</AvFeedback>
-        </AvGroup>
-        <AvGroup>
-          <Label for="password">password</Label>
-          <AvInput
-            name="password"
-            id="password"
-            type="password"
-            min="8"
-            required
-          />
-          <AvFeedback>please enter password</AvFeedback>
-        </AvGroup>
+        <AvField
+          name="email"
+          label="email"
+          type="email"
+          errorMessage="Invalid email"
+          validate={{
+            required: { value: true }
+          }}
+        />
+        <AvField
+          name="password"
+          label="password"
+          type="password"
+          validate={{
+            required: {
+              value: true,
+              errorMessage: "Please enter your password"
+            },
+            minLength: {
+              value: 8,
+              errorMessage: "Your name must be at least 8 characters"
+            }
+          }}
+        />
         <hr />
         <div className="text-right">
           <FormGroup>
             <Button onClick={this.props.handleHide}>cancel</Button>
-            <Button>Submit</Button>
+            <Button color="primary">Submit</Button>
           </FormGroup>
         </div>
       </AvForm>
