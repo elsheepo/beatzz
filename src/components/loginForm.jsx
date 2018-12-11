@@ -4,6 +4,15 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 import PropTypes from "prop-types";
 
 export default class LoginForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleValidSubmit = (event, values) => {
+    this.setState({ values });
+  };
+
   render() {
     return (
       <AvForm>

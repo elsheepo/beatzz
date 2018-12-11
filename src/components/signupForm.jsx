@@ -12,24 +12,24 @@ import _debounce from "lodash.debounce";
 export default class SignupForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      password1: ""
-    };
+    this.state = {};
   }
 
-  // debounce to not pound the 'server'
   validate = _debounce((value, ctx, input, cb) => {
-    // cancel pending 'network call'
+    const x = document.getElementById("password1").value;
     clearTimeout(this.timeout);
-    // simulate network call
     this.timeout = setTimeout(() => {
-      cb(value === "");
+      cb(value === x);
     }, 500);
   }, 300);
 
+  handleValidSubmit = (event, values) => {
+    this.setState({ values });
+  };
+
   render() {
     return (
-      <AvForm>
+      <AvForm onValidSubmit={this.handleValidSubmit}>
         <AvField
           name="firstName"
           label="first name"
@@ -79,7 +79,7 @@ export default class SignupForm extends Component {
           validate={{ async: this.validate }}
         />
         <AvGroup check>
-          <AvInput type="checkbox" name="checkItOut" required />
+          <AvInput type="checkbox" name="accept" required />
           <p>
             {"Agree to the "}
             <a href="" onClick={this.props.displayPrivacy}>

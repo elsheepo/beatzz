@@ -4,6 +4,15 @@ import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Link } from "react-router-dom";
 
 export default class Contact extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  handleValidSubmit = (event, values) => {
+    this.setState({ values });
+  };
+
   render() {
     return (
       <React.Fragment>
