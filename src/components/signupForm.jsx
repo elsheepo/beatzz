@@ -25,6 +25,24 @@ export default class SignupForm extends Component {
 
   handleValidSubmit = (event, values) => {
     this.setState({ values });
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password1").value;
+    fetch("./includes/signup.inc.php", {
+      method: "POST",
+      mode: "same-origin",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        password: password
+      })
+    });
   };
 
   render() {

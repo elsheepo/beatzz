@@ -11,6 +11,22 @@ export default class Contact extends Component {
 
   handleValidSubmit = (event, values) => {
     this.setState({ values });
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+    fetch("./includes/contact.inc.php", {
+      method: "POST",
+      mode: "same-origin",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        name: name,
+        email: email,
+        message: message
+      })
+    });
   };
 
   render() {
@@ -25,15 +41,6 @@ export default class Contact extends Component {
             <CardBody>
               <AvForm>
                 <AvField
-                  name="email"
-                  label="email"
-                  type="email"
-                  errorMessage="Invalid email"
-                  validate={{
-                    required: { value: true }
-                  }}
-                />
-                <AvField
                   name="name"
                   label="name"
                   type="text"
@@ -42,6 +49,15 @@ export default class Contact extends Component {
                       value: true,
                       errorMessage: "Please enter your name"
                     }
+                  }}
+                />
+                <AvField
+                  name="email"
+                  label="email"
+                  type="email"
+                  errorMessage="Invalid email"
+                  validate={{
+                    required: { value: true }
                   }}
                 />
                 <AvField

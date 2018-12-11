@@ -11,6 +11,20 @@ export default class LoginForm extends Component {
 
   handleValidSubmit = (event, values) => {
     this.setState({ values });
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    fetch("./includes/login.inc.php", {
+      method: "POST",
+      mode: "same-origin",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    });
   };
 
   render() {

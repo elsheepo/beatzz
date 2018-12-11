@@ -18,7 +18,6 @@ export default class Login extends Component {
   };
 
   render() {
-    const display = this.state.show;
     return (
       <React.Fragment>
         <Modal isOpen={this.props.display} toggle={this.toggle} size="lg">
