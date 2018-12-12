@@ -20,14 +20,18 @@ function InactiveSession(props) {
         className="pointer"
         onClick={props.displaySignupClicked}
       >
-        <FontAwesome name="user-plus" /> Signup
+        <a className="nav-link">
+          <FontAwesome name="user-plus" /> Signup
+        </a>
       </NavItem>
       <NavItem
         id="loginAnchor"
         className="pointer"
         onClick={props.displayLoginClicked}
       >
-        <FontAwesome name="sign-in" /> Login
+        <a className="nav-link">
+          <FontAwesome name="sign-in" /> Login
+        </a>
       </NavItem>
     </Nav>
   );
@@ -41,10 +45,14 @@ function ActiveSession(props) {
   return (
     <Nav className="ml-auto" navbar>
       <NavItem id="homeAnchor" className="pointer" onClick={props.onClick}>
-        <FontAwesome name="home" /> Home
+        <a className="nav-link">
+          <FontAwesome name="home" /> Home
+        </a>
       </NavItem>
       <NavItem id="logoutAnchor" className="pointer" onClick={props.onClick}>
-        <FontAwesome name="sign-out" /> Logout
+        <a className="nav-link">
+          <FontAwesome name="sign-out" /> Logout
+        </a>
       </NavItem>
     </Nav>
   );
