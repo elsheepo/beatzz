@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 function InactiveSession(props) {
   return (
-    <Nav>
+    <Nav className="ml-auto" navbar>
       <NavItem
         id="signupAnchor"
         className="pointer"
@@ -39,7 +39,7 @@ InactiveSession.propTypes = {
 
 function ActiveSession(props) {
   return (
-    <Nav>
+    <Nav className="ml-auto" navbar>
       <NavItem id="homeAnchor" className="pointer" onClick={props.onClick}>
         <FontAwesome name="home" /> Home
       </NavItem>

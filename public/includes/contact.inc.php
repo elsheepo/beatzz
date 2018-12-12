@@ -37,6 +37,5 @@ $email_subject = "Website Contact Form:  $name";
 $email_body = "You have received a new message from your website contact form.\nHere are the details:\nName: $name\nEmail: $email_address\nMessage:\n$message";
 $headers = "From: noreply@beatzz.co\n";
 $headers .= "Reply-To: $email_address";
-echo "$to $email_subject $email_body $headers";
-// mail($to, $email_subject, $email_body, $headers);
+mail($to, $email_subject, $email_body, $headers);
 return true;

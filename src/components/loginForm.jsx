@@ -29,7 +29,7 @@ export default class LoginForm extends Component {
 
   render() {
     return (
-      <AvForm>
+      <AvForm onValidSubmit={this.handleValidSubmit}>
         <AvField
           name="email"
           label="email"

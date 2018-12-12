@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 const footerStyle = {
@@ -23,14 +23,14 @@ const phantomStyle = {
   width: "100%"
 };
 
-export default class Footer extends React.Component {
+export default class Footer extends Component {
   render() {
     return (
       <footer>
         <div style={phantomStyle} />
         <div style={footerStyle}>
           <p>
-            &copy; 2017-2018 beatzz.co{" "}
+            &copy; 2017-2019 beatzz.co{" "}
             <a href="" className="pointer" onClick={this.props.displayPrivacy}>
               Terms & Privacy
             </a>

@@ -39,7 +39,7 @@ export default class Contact extends Component {
           <p className="text-center text-primary varela-round">CONTACT</p>
           <Card>
             <CardBody>
-              <AvForm>
+              <AvForm onValidSubmit={this.handleValidSubmit}>
                 <AvField
                   name="name"
                   label="name"

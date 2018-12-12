@@ -1,18 +1,16 @@
-import React, { Component } from 'react'
-import { Jumbotron, Card } from 'reactstrap' 
+import React, { Component } from "react";
+import { Jumbotron, Card } from "reactstrap";
 
-class Updates extends Component {
+export default class Updates extends Component {
   render() {
-    // const tooltip = <Tooltip id="modal-tooltip">bah...</Tooltip>;
     return (
       <React.Fragment>
         <Jumbotron>
           <div className="img-container">
-            {/* <OverlayTrigger overlay={tooltip}> */}
-              <img id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
-            {/* </OverlayTrigger> */}
+            <img id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
           </div>
           <p className="text-primary varela-round">UPDATES</p>
+          {/* prettier-ignore */}
           <Card>
             <p><u><b>10/30/2018</b></u><br />Migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a> finished, only to realize I want to use  <a href="https://material-ui.com/" rel="noopener noreferrer" target="_blank">material-ui</a> now instead :p. Forms will be temporarily down while I rewrite the back end with <a href="https://nodejs.org/en/" rel="noopener noreferrer" target="_blank">Node.js</a>. I'll be taking a month off from development to prepare for the <a href="https://www.jlpt.jp/e/" rel="noopener noreferrer" target="_blank">JLPT</a>, wish me luck! See you again in December! -beatzz</p>
             <p><u><b>10/13/2018</b></u><br />Began the migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a>. -beatzz</p>
@@ -38,5 +36,3 @@ class Updates extends Component {
     );
   }
 }
-
-export default Updates;
