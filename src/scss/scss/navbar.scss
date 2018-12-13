@@ -1,7 +1,5 @@
-.nav-item {
-  color: white;
-  margin-left: 10px;
-}
+// styles for NavBar located in ../../components/navbar.jsx
+
 .navbar-brand {
   padding-top: 0;
 }
@@ -10,6 +8,6 @@
     color: white;
   }
   a:hover {
-    color: #007bff;
+    text-decoration: none;
   }
 }

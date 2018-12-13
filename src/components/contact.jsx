@@ -75,9 +75,9 @@ export default class Contact extends Component {
                 <hr />
                 <div className="text-right">
                   <FormGroup>
-                    <Button>
-                      <Link to="/">Cancel</Link>
-                    </Button>
+                    <Link to="/">
+                      <Button>Cancel</Button>
+                    </Link>
                     <Button color="primary">Submit</Button>
                   </FormGroup>
                 </div>

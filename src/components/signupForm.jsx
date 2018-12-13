@@ -100,9 +100,9 @@ export default class SignupForm extends Component {
           <AvInput type="checkbox" name="accept" required />
           <p>
             {"Agree to the "}
-            <a href="" onClick={this.props.displayPrivacy}>
+            <span onClick={this.props.displayPrivacy}>
               terms and conditions
-            </a>
+            </span>
           </p>
         </AvGroup>
         <hr />

@@ -31,9 +31,9 @@ export default class Footer extends Component {
         <div style={footerStyle}>
           <p>
             &copy; 2017-2019 beatzz.co{" "}
-            <a href="" className="pointer" onClick={this.props.displayPrivacy}>
+            <span className="pointer" onClick={this.props.displayPrivacy}>
               Terms & Privacy
-            </a>
+            </span>
           </p>
         </div>
       </footer>
