@@ -16,6 +16,13 @@ span.close:focus {
   color: red;
   cursor: pointer;
 }
+.modal-container {
+  position: relative;
+}
+.modal-container .modal,
+.modal-container .modal-backdrop {
+  position: absolute;
+}
 @media screen and (min-width: 992px) {
   .modal-lg {
     max-width: 80%;
@@ -24,11 +31,4 @@ span.close:focus {
     margin: 5% auto 15% auto;
     width: 60%;
   }
-}
-.modal-container {
-  position: relative;
-}
-.modal-container .modal,
-.modal-container .modal-backdrop {
-  position: absolute;
 }
