@@ -1,13 +1,6 @@
-// styles for NavBar located in ../../components/navbar.jsx
-
 .navbar-brand {
   padding-top: 0;
 }
-.nav-link {
-  a {
-    color: white;
-  }
-  a:hover {
-    text-decoration: none;
-  }
+.navbar-nav a:hover {
+  text-decoration: none;
 }

@@ -12,7 +12,7 @@ export default class Contact extends Component {
   handleValidSubmit = (event, values) => {
     this.setState({ values });
     const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("contactEmail").value;
     const message = document.getElementById("message").value;
     fetch("./includes/contact.inc.php", {
       method: "POST",
@@ -52,7 +52,7 @@ export default class Contact extends Component {
                   }}
                 />
                 <AvField
-                  name="email"
+                  name="contactEmail"
                   label="email"
                   type="email"
                   errorMessage="Invalid email"

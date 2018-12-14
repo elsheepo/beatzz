@@ -17,7 +17,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>slackware.com</u>
+                slackware.com
               </a>
               <br />
               The official Slackware Linux website.
@@ -29,7 +29,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>docs.slackware.com</u>
+                docs.slackware.com
               </a>
               <br />
               The official Slackware Linux documentation website.
@@ -41,7 +41,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>slackbook.org</u>
+                slackbook.org
               </a>
               <br />
               The revised Slackware book project.
@@ -53,7 +53,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>slackbuilds.org</u>
+                slackbuilds.org
               </a>
               <br />A vast repository of software packages built for Slackware
               Linux.
@@ -65,7 +65,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>linuxquestions.org - Slackware Forum</u>
+                linuxquestions.org - Slackware Forum
               </a>
               <br />
               The official forum for the Slackware Linux community.
@@ -77,7 +77,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>w3schools.com</u>
+                w3schools.com
               </a>
               <br />
               An excellent place to learn web-design.
@@ -89,7 +89,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>wigums.ddns.net</u>
+                wigums.ddns.net
               </a>
               <br />A mad computer scientist / IRC troll's domain, a domain full
               of mystical hacking resources.
@@ -101,7 +101,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>coderanch.com</u>
+                coderanch.com
               </a>
               <br />A community of Java developers with tons of experience to
               share.
@@ -113,7 +113,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>IntelliJ IDEA</u>
+                IntelliJ IDEA
               </a>
               <br />
               Capable and Ergonomic IDE for JVM.
@@ -125,7 +125,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>Visual Studio Code</u>
+                Visual Studio Code
               </a>
               <br />
               An incredibly powerful and customizable IDE for a wide variety of
@@ -138,7 +138,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>GNU Image Manipulation Program</u>
+                GNU Image Manipulation Program
               </a>
               <br />
               Open-Source image manipulation / graphical design application.
@@ -150,7 +150,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>Blender</u>
+                Blender
               </a>
               <br />
               Open-Source video editor / 3D design application.
@@ -162,7 +162,7 @@ export default class Links extends Component {
                 rel="noopener noreferrer"
                 target="_blank"
               >
-                <u>OpenOffice</u>
+                OpenOffice
               </a>
               <br />
               Open-Source office suite.

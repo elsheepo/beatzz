@@ -27,7 +27,7 @@ export default class SignupForm extends Component {
     this.setState({ values });
     const firstName = document.getElementById("firstName").value;
     const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("signupEmail").value;
     const password = document.getElementById("password1").value;
     fetch("./includes/signup.inc.php", {
       method: "POST",
@@ -67,7 +67,7 @@ export default class SignupForm extends Component {
           }}
         />
         <AvField
-          name="email"
+          name="signupEmail"
           label="email"
           type="email"
           errorMessage="Invalid email"

@@ -11,7 +11,7 @@ export default class LoginForm extends Component {
 
   handleValidSubmit = (event, values) => {
     this.setState({ values });
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("loginEmail").value;
     const password = document.getElementById("password").value;
     fetch("./includes/login.inc.php", {
       method: "POST",
@@ -31,7 +31,7 @@ export default class LoginForm extends Component {
     return (
       <AvForm onValidSubmit={this.handleValidSubmit}>
         <AvField
-          name="email"
+          name="loginEmail"
           label="email"
           type="email"
           errorMessage="Invalid email"

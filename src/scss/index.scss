@@ -9,31 +9,28 @@ html {
   position: relative;
   min-height: 100%;
 }
-
 body {
   min-height: 100%;
 }
-
 .varela-round {
   font-family: "Varela Round";
 }
-
 .row {
   margin-left: 0;
   margin-right: 0;
 }
-
 .card {
   padding: 5px;
 }
-
+.card a:hover {
+  text-decoration: none;
+}
 .jumbotron {
-  margin-top: 90px;
+  margin-top: 42px;
   p {
     font-size: 14px;
   }
 }
-
 .pointer:hover {
   cursor: pointer;
 }

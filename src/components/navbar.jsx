@@ -6,8 +6,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem,
-  NavLink
+  NavItem
 } from "reactstrap";
 import FontAwesome from "react-fontawesome";
 import { Link } from "react-router-dom";
@@ -105,31 +104,31 @@ export default class NavBar extends Component {
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="mr-auto" navbar>
-            <NavItem className="pointer">
-              <NavLink>
-                <Link to="/">Updates</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem className="pointer">
-              <NavLink>
-                <Link to="/projects">Projects</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem className="pointer">
-              <NavLink>
-                <Link to="/docs">Documentation</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem className="pointer">
-              <NavLink>
-                <Link to="/links">Links</Link>
-              </NavLink>
-            </NavItem>
-            <NavItem className="pointer">
-              <NavLink>
-                <Link to="/contact">Contact</Link>
-              </NavLink>
-            </NavItem>
+            <Link to="/">
+              <NavItem className="pointer">
+                <span className="nav-link">Updates</span>
+              </NavItem>
+            </Link>
+            <Link to="/projects">
+              <NavItem className="pointer">
+                <span className="nav-link">Projects</span>
+              </NavItem>
+            </Link>
+            <Link to="/docs">
+              <NavItem className="pointer">
+                <span className="nav-link">Documentation</span>
+              </NavItem>
+            </Link>
+            <Link to="/links">
+              <NavItem className="pointer">
+                <span className="nav-link">Links</span>
+              </NavItem>
+            </Link>
+            <Link to="/contact">
+              <NavItem className="pointer">
+                <span className="nav-link">Contact</span>
+              </NavItem>
+            </Link>
           </Nav>
           {loginControl}
         </Collapse>

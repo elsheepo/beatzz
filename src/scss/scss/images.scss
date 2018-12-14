@@ -2,24 +2,30 @@
   height: 15%;
   width: 15%;
 }
-
 #docImg {
   height: 10%;
   width: 10%;
 }
-
 #whiteSheep {
   height: 30px;
   width: 30px;
 }
-
 .float-left {
   width: 10%;
   height: 10%;
   float: top;
   margin: 0px 0px 0px 0px;
 }
-
+@media screen and (min-width: 576px) {
+  #docImg {
+    height: 100%;
+    width: 100%;
+  }
+  .float-left {
+    height: 100%;
+    width: 100%;
+  }
+}
 @media screen and (min-width: 992px) {
   .float-left {
     width: 70%;
@@ -27,7 +33,6 @@
     float: left;
     margin: 0px 0px 0px 0px;
   }
-
   #docImg {
     height: 50%;
     width: 50%;
