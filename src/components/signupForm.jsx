@@ -42,7 +42,10 @@ export default class SignupForm extends Component {
         email: email,
         password: password
       })
-    });
+    })
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.error(error));
   };
 
   render() {

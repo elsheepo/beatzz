@@ -26,7 +26,10 @@ export default class Contact extends Component {
         email: email,
         message: message
       })
-    });
+    })
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.error(error));
   };
 
   render() {

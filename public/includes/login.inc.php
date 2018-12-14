@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The login.inc.php script.  The script recieves JSON encoded username and password
+ * The login.inc.php script.  The script receives JSON encoded username and password
  * sent from Ajax, decodes the JSON, connects to MySQL database,
  * then executes error handling for the username and password.
  * Finally returning either true or false and error handling data to the Ajax call.
@@ -29,16 +29,16 @@
 
 session_start();
 require_once 'dbh.inc.php';
-// recieve JSON encoded Ajax data & decode
-$requestBody = file_get_contents('php://input'); 
+// receive JSON encoded Ajax data & decode
+$requestBody = file_get_contents('php://input');
 $jsonData = json_decode($requestBody); 
 // initialize variables
-$uid = $jsonData->uid;
-$pwd = $jsonData->pwd;
+$email = $jsonData->email;
+$pwd = $jsonData->password;
 // check if username is in database
 try {
     $stmt = $conn->prepare("SELECT user_id, user_pwd, user_first, user_last, user_email, user_uid FROM users WHERE user_uid = ?");
-    $stmt->execute([$jsonData->uid]);
+    $stmt->execute([$email]);
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $ex) {
     logException($ex);
