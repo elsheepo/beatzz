@@ -24,3 +24,10 @@ This project began in November 2017 with the simple goal of self learning front-
 you can view the current progress on my server at https://www.beatzz.co/
 
 ![](https://github.com/elsheepo/beatzz.co/blob/master/src/img/Capture.PNG?raw=true)
+
+## to do list
+- [ ] modals need to close when user clicks outside of the modal
+- [ ] Privacy notice needs to be accessible from within the Signup modal form
+- [ ] clean up php
+- [ ] fetch().then() to handle the promises returned on contact, signup, and login forms
+
