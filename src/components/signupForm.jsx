@@ -17,7 +17,6 @@ export default class SignupForm extends Component {
       displayNotice: false,
       firstName: "",
       lastName: "",
-      email: "",
       password1: "",
       password2: "",
       agreed: false
