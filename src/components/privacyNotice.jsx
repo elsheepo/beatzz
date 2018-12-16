@@ -1,5 +1,4 @@
 import React from "react";
-import { Card } from "reactstrap";
 
 const PrivacyNotice = props => {
   return (
