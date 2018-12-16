@@ -64,7 +64,6 @@ export default class SignupForm extends Component {
   };
 
   handleChange = e => {
-    // let change = { [e.target.name] = e.target.value };
     let change = {};
     change[e.target.name] = e.target.value;
     this.setState(change);
@@ -101,7 +100,12 @@ export default class SignupForm extends Component {
               <AvInput type="checkbox" name="accept" required />
               <p>
                 {"Agree to the "}
-                <span onClick={this.toggle} onChange={this.handleChange}>
+                <span
+                  name="accept"
+                  onClick={this.toggle}
+                  onChange={this.handleChange}
+                  value={this.state.agreed}
+                >
                   <u>terms and conditions</u>
                 </span>
               </p>
@@ -133,17 +137,8 @@ class Fields extends Component {
       lastName: this.props.lastName,
       email: this.props.email,
       password1: this.props.password1,
-      password2: this.props.password2,
-      agreed: this.props.agreed
+      password2: this.props.password2
     };
-  }
-  componentDidMount() {
-    document.getElementById("firstName").value = this.state.firstName;
-    document.getElementById("lastName").value = this.state.lastName;
-    document.getElementById("signupEmail").value = this.state.email;
-    document.getElementById("password1").value = this.state.password1;
-    document.getElementById("password2").value = this.state.password2;
-    document.getElementById("accept").value = this.state.agreed;
   }
 
   render() {
@@ -158,6 +153,7 @@ class Fields extends Component {
             required: { value: true }
           }}
           onChange={this.props.onChange}
+          value={this.state.firstName}
         />
         <AvField
           name="lastName"
@@ -168,6 +164,7 @@ class Fields extends Component {
             required: { value: true }
           }}
           onChange={this.props.onChange}
+          value={this.state.lastName}
         />
         <AvField
           name="signupEmail"
@@ -178,6 +175,7 @@ class Fields extends Component {
             required: { value: true }
           }}
           onChange={this.props.onChange}
+          value={this.state.email}
         />
         <AvField
           name="password1"
@@ -194,6 +192,7 @@ class Fields extends Component {
             }
           }}
           onChange={this.props.onChange}
+          value={this.state.password1}
         />
         <AvField
           name="password2"
@@ -201,6 +200,7 @@ class Fields extends Component {
           type="password"
           validate={{ async: this.props.validatePassword2 }}
           onChange={this.props.onChange}
+          value={this.state.password2}
         />
       </React.Fragment>
     );
@@ -213,7 +213,6 @@ Fields.propTypes = {
   email: PropTypes.string,
   password1: PropTypes.string,
   password2: PropTypes.string,
-  agreed: PropTypes.bool,
   validatePassword2: PropTypes.func,
   onChange: PropTypes.func
 };
