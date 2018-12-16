@@ -89,7 +89,7 @@ export default class SignupForm extends Component {
             <Fields
               firstName={this.state.firstName}
               lastName={this.state.lastName}
-              email={this.state.email}
+              signupEmail={this.state.signupEmail}
               password1={this.state.password1}
               password2={this.state.password2}
               agreed={this.state.agreed}
@@ -135,7 +135,7 @@ class Fields extends Component {
     this.state = {
       firstName: this.props.firstName,
       lastName: this.props.lastName,
-      email: this.props.email,
+      signupEmail: this.props.signupEmail,
       password1: this.props.password1,
       password2: this.props.password2
     };
@@ -175,7 +175,7 @@ class Fields extends Component {
             required: { value: true }
           }}
           onChange={this.props.onChange}
-          value={this.state.email}
+          value={this.state.signupEmail}
         />
         <AvField
           name="password1"
@@ -210,7 +210,7 @@ class Fields extends Component {
 Fields.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
-  email: PropTypes.string,
+  signupEmail: PropTypes.string,
   password1: PropTypes.string,
   password2: PropTypes.string,
   validatePassword2: PropTypes.func,
