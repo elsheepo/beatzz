@@ -60,7 +60,7 @@ export default class Privacy extends Component {
               </p>
             </ModalHeader>
             <ModalBody>
-              <Card>
+              <Card className="privacy-card">
                 <PrivacyNotice />
               </Card>
             </ModalBody>

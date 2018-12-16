@@ -75,7 +75,7 @@ export default class SignupForm extends Component {
       <AvForm onValidSubmit={this.handleValidSubmit}>
         {displayNotice ? (
           <React.Fragment>
-            <Card id="signupCard">
+            <Card className="privacy-card">
               <PrivacyNotice />
             </Card>
 
