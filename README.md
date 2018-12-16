@@ -28,6 +28,6 @@ you can view the current progress on my server at https://www.beatzz.co/
 ## to do list
 
 - [x] modals need to close when user clicks outside of the modal
-- [ ] Privacy notice needs to be accessible from within the Signup modal form
+- [x] Privacy notice needs to be accessible from within the Signup modal form
 - [ ] clean up php
 - [ ] fetch().then() to handle the promises returned on contact, signup, and login forms
