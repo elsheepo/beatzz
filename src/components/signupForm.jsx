@@ -14,7 +14,13 @@ export default class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      displayNotice: false
+      displayNotice: false,
+      firstName: "",
+      lastName: "",
+      email: "",
+      password1: "",
+      password2: "",
+      agreed: false
     };
   }
 
@@ -57,6 +63,13 @@ export default class SignupForm extends Component {
     });
   };
 
+  handleChange = e => {
+    // let change = { [e.target.name] = e.target.value };
+    let change = {};
+    change[e.target.name] = e.target.value;
+    this.setState(change);
+  };
+
   render() {
     const displayNotice = this.state.displayNotice;
 
@@ -74,12 +87,21 @@ export default class SignupForm extends Component {
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Fields validatePassword2={this.validate} />
+            <Fields
+              firstName={this.state.firstName}
+              lastName={this.state.lastName}
+              email={this.state.email}
+              password1={this.state.password1}
+              password2={this.state.password2}
+              agreed={this.state.agreed}
+              validatePassword2={this.validate}
+              onChange={this.handleChange}
+            />
             <AvGroup check>
               <AvInput type="checkbox" name="accept" required />
               <p>
                 {"Agree to the "}
-                <span onClick={this.toggle}>
+                <span onClick={this.toggle} onChange={this.handleChange}>
                   <u>terms and conditions</u>
                 </span>
               </p>
@@ -103,61 +125,95 @@ SignupForm.propTypes = {
   displayPrivacy: PropTypes.bool
 };
 
-const Fields = props => {
-  return (
-    <React.Fragment>
-      <AvField
-        name="firstName"
-        label="first name"
-        type="text"
-        errorMessage="required"
-        validate={{
-          required: { value: true }
-        }}
-      />
-      <AvField
-        name="lastName"
-        label="last name"
-        type="text"
-        errorMessage="required"
-        validate={{
-          required: { value: true }
-        }}
-      />
-      <AvField
-        name="signupEmail"
-        label="email"
-        type="email"
-        errorMessage="Invalid email"
-        validate={{
-          required: { value: true }
-        }}
-      />
-      <AvField
-        name="password1"
-        label="password"
-        type="password"
-        validate={{
-          required: {
-            value: true,
-            errorMessage: "Please enter your password"
-          },
-          minLength: {
-            value: 8,
-            errorMessage: "Your name must be at least 8 characters"
-          }
-        }}
-      />
-      <AvField
-        name="password2"
-        label="password"
-        type="password"
-        validate={{ async: props.validatePassword2 }}
-      />
-    </React.Fragment>
-  );
-};
+class Fields extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: this.props.firstName,
+      lastName: this.props.lastName,
+      email: this.props.email,
+      password1: this.props.password1,
+      password2: this.props.password2,
+      agreed: this.props.agreed
+    };
+  }
+  componentDidMount() {
+    document.getElementById("firstName").value = this.state.firstName;
+    document.getElementById("lastName").value = this.state.lastName;
+    document.getElementById("signupEmail").value = this.state.email;
+    document.getElementById("password1").value = this.state.password1;
+    document.getElementById("password2").value = this.state.password2;
+    document.getElementById("accept").value = this.state.agreed;
+  }
+
+  render() {
+    return (
+      <React.Fragment>
+        <AvField
+          name="firstName"
+          label="first name"
+          type="text"
+          errorMessage="required"
+          validate={{
+            required: { value: true }
+          }}
+          onChange={this.props.onChange}
+        />
+        <AvField
+          name="lastName"
+          label="last name"
+          type="text"
+          errorMessage="required"
+          validate={{
+            required: { value: true }
+          }}
+          onChange={this.props.onChange}
+        />
+        <AvField
+          name="signupEmail"
+          label="email"
+          type="email"
+          errorMessage="Invalid email"
+          validate={{
+            required: { value: true }
+          }}
+          onChange={this.props.onChange}
+        />
+        <AvField
+          name="password1"
+          label="password"
+          type="password"
+          validate={{
+            required: {
+              value: true,
+              errorMessage: "Please enter your password"
+            },
+            minLength: {
+              value: 8,
+              errorMessage: "Your name must be at least 8 characters"
+            }
+          }}
+          onChange={this.props.onChange}
+        />
+        <AvField
+          name="password2"
+          label="password"
+          type="password"
+          validate={{ async: this.props.validatePassword2 }}
+          onChange={this.props.onChange}
+        />
+      </React.Fragment>
+    );
+  }
+}
 
 Fields.propTypes = {
-  validatePassword2: PropTypes.func
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string,
+  password1: PropTypes.string,
+  password2: PropTypes.string,
+  agreed: PropTypes.bool,
+  validatePassword2: PropTypes.func,
+  onChange: PropTypes.func
 };
