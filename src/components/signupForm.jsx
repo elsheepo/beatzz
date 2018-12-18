@@ -65,9 +65,7 @@ export default class SignupForm extends Component {
             <Alert color="success">{result.message}</Alert>,
             alertElement
           );
-          window.setTimeout(function() {
-            this.props.unmount();
-          }, 1500);
+          setTimeout(() => this.props.unmount(), 1500);
           this.props.toggleLogin();
         }
       })
