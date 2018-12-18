@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card, FormGroup, Button } from "reactstrap";
+import ReactDOM from "react-dom";
+import { Card, FormGroup, Button, Alert } from "reactstrap";
 import {
   AvForm,
   AvField,
@@ -24,7 +25,7 @@ export default class SignupForm extends Component {
   }
 
   validate = _debounce((value, ctx, input, cb) => {
-    const x = document.getElementById("password1").value;
+    const x = this.state.password1;
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
       cb(value === x);
@@ -33,10 +34,10 @@ export default class SignupForm extends Component {
 
   handleValidSubmit = (event, values) => {
     this.setState({ values });
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const email = document.getElementById("signupEmail").value;
-    const password = document.getElementById("password1").value;
+    const firstName = this.state.firstName;
+    const lastName = this.state.lastName;
+    const email = this.state.signupEmail;
+    const password = this.state.password2;
     fetch("./includes/signup.inc.php", {
       method: "POST",
       mode: "same-origin",
@@ -52,7 +53,24 @@ export default class SignupForm extends Component {
       })
     })
       .then(response => response.json())
-      .then(result => console.log(result))
+      .then(result => {
+        const alertElement = document.getElementById("alert-div");
+        if (result.success === false) {
+          ReactDOM.render(
+            <Alert color="warning">{result.message}</Alert>,
+            alertElement
+          );
+        } else if (result.success === true) {
+          ReactDOM.render(
+            <Alert color="success">{result.message}</Alert>,
+            alertElement
+          );
+          window.setTimeout(function() {
+            this.props.unmount();
+          }, 1500);
+          this.props.toggleLogin();
+        }
+      })
       .catch(error => console.error(error));
   };
 
@@ -78,7 +96,6 @@ export default class SignupForm extends Component {
             <Card className="privacy-card">
               <PrivacyNotice />
             </Card>
-
             <Button id="return-to-form" color="primary" onClick={this.toggle}>
               return to form
             </Button>
@@ -112,7 +129,8 @@ export default class SignupForm extends Component {
             <hr />
             <div className="text-right">
               <FormGroup>
-                <Button onClick={this.props.handleHide}>cancel</Button>
+                <div id="alert-div" />
+                <Button onClick={this.props.unmount}>cancel</Button>
                 <Button color="primary">Submit</Button>
               </FormGroup>
             </div>
@@ -124,8 +142,9 @@ export default class SignupForm extends Component {
 }
 
 SignupForm.propTypes = {
-  handleHide: PropTypes.func,
-  displayPrivacy: PropTypes.bool
+  unmount: PropTypes.func,
+  displayPrivacy: PropTypes.bool,
+  toggleLogin: PropTypes.func
 };
 
 class Fields extends Component {

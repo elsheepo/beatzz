@@ -43,12 +43,12 @@ InactiveSession.propTypes = {
 function ActiveSession(props) {
   return (
     <Nav className="ml-auto" navbar>
-      <NavItem id="homeAnchor" className="pointer" onClick={props.onClick}>
+      <NavItem id="homeAnchor" className="pointer">
         <span className="nav-link">
           <FontAwesome name="home" /> Home
         </span>
       </NavItem>
-      <NavItem id="logoutAnchor" className="pointer" onClick={props.onClick}>
+      <NavItem id="logoutAnchor" className="pointer" onClick={props.logout}>
         <span className="nav-link">
           <FontAwesome name="sign-out" /> Logout
         </span>
@@ -83,7 +83,7 @@ export default class NavBar extends Component {
       loginControl = (
         <ActiveSession
           className="d-flex justify-content-end"
-          onClick={this.props.loginToggle}
+          logout={this.props.toggleLogin}
         />
       );
     } else {
@@ -138,7 +138,7 @@ export default class NavBar extends Component {
 }
 NavBar.propTypes = {
   isLoggedIn: PropTypes.bool,
-  loginToggle: PropTypes.func,
+  toggleLogin: PropTypes.func,
   displayLoginClicked: PropTypes.func,
   displaySignupClicked: PropTypes.func
 };

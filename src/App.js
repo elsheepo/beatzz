@@ -24,7 +24,7 @@ export default class App extends Component {
     };
   }
 
-  loginToggle = () => {
+  toggleLogin = () => {
     this.setState({ isLoggedIn: !this.state.isLoggedIn });
   };
 
@@ -60,7 +60,7 @@ export default class App extends Component {
         <React.Fragment>
           <NavBar
             isLoggedIn={isLoggedIn}
-            loginToggle={this.loginToggle}
+            toggleLogin={this.toggleLogin}
             displayLoginClicked={this.displayLoginHandler}
             displaySignupClicked={this.displaySignupHandler}
           />
@@ -85,7 +85,8 @@ export default class App extends Component {
           <Signup
             display={displaySignupModal}
             displayPrivacy={displayPrivacyModal}
-            handleHide={this.hideSignupHandler}
+            unmount={this.hideSignupHandler}
+            toggleLogin={this.toggleLogin}
           />
           <Privacy
             display={displayPrivacyModal}
