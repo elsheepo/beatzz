@@ -69,7 +69,16 @@ export default class SignupForm extends Component {
           this.props.toggleLogin();
         }
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        const alertElement = document.getElementById("alert-div");
+        ReactDOM.render(
+          <Alert color="danger">
+            there seems to be an error connecting to the database. Please try
+            again later.
+          </Alert>,
+          alertElement
+        );
+      });
   };
 
   toggle = () => {

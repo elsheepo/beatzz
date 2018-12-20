@@ -25,7 +25,7 @@ export default class Login extends Component {
 
   handleClickOutside = event => {
     if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
-      this.props.handleHide();
+      this.props.unmount();
     }
   };
 
@@ -45,7 +45,7 @@ export default class Login extends Component {
                 <span
                   className="close"
                   title="Close Modal"
-                  onClick={this.props.handleHide}
+                  onClick={this.props.unmount}
                 >
                   &times;
                 </span>
@@ -58,7 +58,10 @@ export default class Login extends Component {
               <p className="text-primary text-center varela-round">LOGIN</p>
             </ModalHeader>
             <ModalBody>
-              <LoginForm handleHide={this.props.handleHide} />
+              <LoginForm
+                unmount={this.props.unmount}
+                toggleLogin={this.props.toggleLogin}
+              />
             </ModalBody>
           </div>
         </Modal>
@@ -70,5 +73,6 @@ export default class Login extends Component {
 Login.propTypes = {
   display: PropTypes.bool,
   className: PropTypes.string,
-  handleHide: PropTypes.func
+  unmount: PropTypes.func,
+  toggleLogin: PropTypes.func
 };

@@ -3,7 +3,7 @@
 /**
  * The signup.inc.php script. This script receives JSON encoded signup information.
  * It then decodes the data and checks if the email is already in use.
- * The script then, using PDO will insert the new user into the 'login' database,
+ * The script will then, using PDO will insert the new user into the 'users' table,
  * Finally it returns a successful promise to the caller.
  * 
  * PHP version 7
@@ -26,40 +26,45 @@
  * @deprecated File deprecated in Release 2.0.0
  */
 
-session_start();
 require_once 'dbh.inc.php';
-// receive JSON encoded data from Ajax call
+
+// receive JSON data and decode
 $requestBody = file_get_contents('php://input');
 $jsonData = json_decode($requestBody);
 
 // initialize variables
-$first = $jsonData->firstName;
-$last = $jsonData->lastName;
+$firstName = $jsonData->firstName;
+$lastName = $jsonData->lastName;
 $email = $jsonData->email;
-$pwd = $jsonData->password;
+$password = $jsonData->password;
 
-// check if username is available
+// check if email address is in database
 $sql = $conn->prepare("SELECT * FROM users WHERE user_email = ?");
 $sql->execute([$email]);
+
 if ($sql->rowCount() > 0) {
+    // close connection to database, and return JSON encoded data
     $conn = null;
-    // promise return
-    $data['message'] = "email already taken!";
-    $data['success'] = false;
+    $promise['success'] = false;
+    $promise['message'] = "email already taken!";
     header('Content-type: application/json');
-    echo json_encode($data);
+    echo json_encode($promise);
+
 } else {
-    // hashing the password
-    $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+    // hash the password
+    $hashedPwd = password_hash($password, PASSWORD_DEFAULT);
 
-    // insert the user into database
+    // insert the user into database and close connection to database
     $sql = "INSERT INTO users (user_first, user_last, user_email, user_pwd) VALUES (?,?,?,?)";
-    $conn->prepare($sql)->execute([$first, $last, $email, $hashedPwd]);
+    $conn->prepare($sql)->execute([$firstName, $lastName, $email, $hashedPwd]);
     $conn = null;
 
-    // promise return
-    $data['message'] = "Signup successful, welcome " . $first . "!";
-    $data['success'] = true;
+    // return promise
+    $promise['success'] = true;
+    $promise['message'] = "Signup successful, welcome " . $firstName . "!";
     header('Content-type: application/json');
-    echo json_encode($data);
+    echo json_encode($promise);
+
 }
+
+exit;

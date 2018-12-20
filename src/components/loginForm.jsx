@@ -1,12 +1,16 @@
 import React, { Component } from "react";
-import { Button, FormGroup } from "reactstrap";
+import ReactDOM from "react-dom";
+import { Alert, Button, FormGroup } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import PropTypes from "prop-types";
 
 export default class LoginForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email: "",
+      password: ""
+    };
   }
 
   handleValidSubmit = (event, values) => {
@@ -25,9 +29,40 @@ export default class LoginForm extends Component {
         password: password
       })
     })
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.error(error));
+      .then(response => response.json())
+      .then(result => {
+        const alertElement = document.getElementById("alert-div");
+        if (result.success === false) {
+          ReactDOM.render(
+            <Alert color="warning">{result.message}</Alert>,
+            alertElement
+          );
+        } else if (result.success === true) {
+          ReactDOM.render(
+            <Alert color="success">{result.message}</Alert>,
+            alertElement
+          );
+          setTimeout(() => this.props.unmount(), 1500);
+          this.props.toggleLogin();
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        const alertElement = document.getElementById("alert-div");
+        ReactDOM.render(
+          <Alert color="danger">
+            there seems to be an error connecting to the database. Please try
+            again later.
+          </Alert>,
+          alertElement
+        );
+      });
+  };
+
+  handleChange = e => {
+    let change = {};
+    change[e.target.name] = e.target.value;
+    this.setState(change);
   };
 
   render() {
@@ -41,6 +76,8 @@ export default class LoginForm extends Component {
           validate={{
             required: { value: true }
           }}
+          onChange={this.handleChange}
+          value={this.state.email}
         />
         <AvField
           name="password"
@@ -56,11 +93,14 @@ export default class LoginForm extends Component {
               errorMessage: "Your name must be at least 8 characters"
             }
           }}
+          onChange={this.handleChange}
+          value={this.state.password}
         />
         <hr />
         <div className="text-right">
           <FormGroup>
-            <Button onClick={this.props.handleHide}>cancel</Button>
+            <div id="alert-div" />
+            <Button onClick={this.props.unmount}>cancel</Button>
             <Button color="primary">Submit</Button>
           </FormGroup>
         </div>
@@ -70,5 +110,6 @@ export default class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
-  handleHide: PropTypes.func
+  unmount: PropTypes.func,
+  toggleLogin: PropTypes.func
 };

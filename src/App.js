@@ -80,7 +80,8 @@ export default class App extends Component {
           <Footer displayPrivacy={this.displayPrivacyHandler} />
           <Login
             display={displayLoginModal}
-            handleHide={this.hideLoginHandler}
+            unmount={this.hideLoginHandler}
+            toggleLogin={this.toggleLogin}
           />
           <Signup
             display={displaySignupModal}

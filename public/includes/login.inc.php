@@ -27,58 +27,56 @@
  * @deprecated File deprecated in Release 2.0.0
  */
 
-session_start();
 require_once 'dbh.inc.php';
-// receive JSON encoded Ajax data & decode
+
+// receive JSON data and decode
 $requestBody = file_get_contents('php://input');
-$jsonData = json_decode($requestBody); 
+$jsonData = json_decode($requestBody);
+
 // initialize variables
 $email = $jsonData->email;
-$pwd = $jsonData->password;
-// check if username is in database
+$password = $jsonData->password;
+
+// query database for user by email
 try {
-    $stmt = $conn->prepare("SELECT user_id, user_pwd, user_first, user_last, user_email, user_uid FROM users WHERE user_uid = ?");
-    $stmt->execute([$email]);
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $sql = $conn->prepare("SELECT user_first, user_last, user_email, user_pwd FROM users WHERE user_email = ?");
+    $sql->execute([$email]);
+    $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $ex) {
     logException($ex);
 }
-if (count($result) < 1) {
-    $conn = null;
-    // Ajax return
-    $data['status'] = 'error';
-    $data['code'] = '1';
-    $data['message'] = "Username not found!";
-    $data['url'] = "?login=username_not_found";
-    header('Content-type: application/json');
-    echo json_encode($data);
-    exit;
-}
-// verify the password
-$hashedPwdCheck = password_verify($pwd, $result[0]['user_pwd']);
-if ($hashedPwdCheck == false) {
-    $conn = null;
-    // Ajax return
-    $data['status'] = 'error';
-    $data['code'] = '2';
-    $data['message'] = "Invalid password!";
-    $data['url'] = "?login=invalid_password";
-    header('Content-type: application/json');
-    echo json_encode($data);
-    exit;
-}
-// initialize SESSION variables
-$_SESSION['user_id'] = $result[0]['user_id'];
-$_SESSION['user_first'] = $result[0]['user_first'];
-$_SESSION['user_last'] = $result[0]['user_last'];
-$_SESSION['user_email'] = $result[0]['user_email'];
-$_SESSION['user_uid'] = $result[0]['user_uid'];
 
-$conn = null;
-// Ajax return
-$data['status'] = 'success';
-$data['code'] = '3';
-$data['message'] = "Welcome " . $_SESSION['user_uid'] . "!";
-$data['url'] = "?login=success";
-header('Content-type: application/json');
-echo json_encode($data);
+// check if email address is in database
+if (count($result) < 1) {
+    // close connection to database, and return promise
+    $conn = null;
+    $promise['success'] = false;
+    $promise['message'] = "that email doesn't seem to be in our database!";
+    header('Content-type: application/json');
+    echo json_encode($promise);
+
+} else {
+    // verify the password
+    $hashedPwdCheck = password_verify($password, $result[0]['user_pwd']);
+
+    if ($hashedPwdCheck == false) {
+        // close connection to database, and return promise
+        $conn = null;
+        $promise['success'] = false;
+        $promise['message'] = "incorrect password!";
+        header('Content-type: application/json');
+        echo json_encode($promise);
+
+    } else {
+        // close connection to database, and return promise
+        $conn = null;
+        $promise['success'] = true;
+        $promise['message'] = "Welcome back " . $result[0]['user_first'] . "!";
+        header('Content-type: application/json');
+        echo json_encode($promise);
+
+    }
+
+}
+
+exit;
