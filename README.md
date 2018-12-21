@@ -27,9 +27,5 @@ you can view the current progress on my server at https://www.beatzz.co/
 
 ## to do list
 
-- [x] modals need to close when user clicks outside of the modal
-- [x] Privacy notice needs to be accessible from within the Signup modal form
-- [x] Signup form needs to save input when viewing privacy notice
-- [x] reformat Privacy model via footer
-- [ ] clean up php
-- [ ] fetch().then() to handle the promises returned on contact, signup, and login forms
+- [ ] general component & package cleanup
+- [ ] final release inspection

@@ -67,7 +67,7 @@ export default class App extends Component {
           <Container>
             <Row>
               <Col />
-              <Col className="text-center" sm="14" xl="12">
+              <Col className="text-center" id="body" sm="14" xl="12">
                 <Route path="/contact" component={Contact} />
                 <Route path="/docs" component={Docs} />
                 <Route path="/links" component={Links} />

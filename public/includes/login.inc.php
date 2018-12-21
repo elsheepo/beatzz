@@ -1,30 +1,19 @@
 <?php
 
 /**
- * The login.inc.php script.  The script receives JSON encoded username and password
- * sent from Ajax, decodes the JSON, connects to MySQL database,
+ * The login.inc.php script.
+ * 
+ * This script receives JSON encoded username and password,
+ * decodes the data, queries the database,
  * then executes error handling for the username and password.
- * Finally returning either true or false and error handling data to the Ajax call.
+ * Finally it returns either true or false and error handling data to the caller.
  *
  * PHP version 7
  *
- * LICENSE: This source file is subject to version 3.01 of the PHP license
- * that is available through the world-wide-web at the following URI:
- * http://www.php.net/license/3_01.txt.  If you did not receive a copy of
- * the PHP License and are unable to obtain it through the web, please
- * send a note to license@php.net so we can mail you a copy immediately.
- * Thanks to TML for help refining the code!!
- *
- * @category   CategoryName
- * @package    PackageName
- * @author     Eric Arnold (beatzz) <elsheepo@protonmail.com>
- * @copyright  1997-2018 The PHP Group
- * @license    http://www.php.net/license/3_01.txt  PHP License 3.01
- * @version    SVN: $Id$
- * @link       http://www.beatzz.co/
- * @see        NetOther, Net_Sample::Net_Sample()
- * @since      File available since Release 1.2.0
- * @deprecated File deprecated in Release 2.0.0
+ * @author    Eric Arnold (beatzz) <elsheepo@protonmail.com>
+ * @copyright 2017-2019 beatzz.co
+ * @license   https://www.gnu.org/licenses/gpl-3.0.html  GNU GPLv3
+ * @link      http://www.beatzz.co/
  */
 
 require_once 'dbh.inc.php';
@@ -42,8 +31,10 @@ try {
     $sql = $conn->prepare("SELECT user_first, user_last, user_email, user_pwd FROM users WHERE user_email = ?");
     $sql->execute([$email]);
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
 } catch (PDOException $ex) {
     logException($ex);
+
 }
 
 // check if email address is in database

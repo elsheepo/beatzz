@@ -1,19 +1,32 @@
 import React, { Component } from "react";
-import { Jumbotron, Card, CardBody, Button, FormGroup } from "reactstrap";
+import ReactDOM from "react-dom";
+import {
+  Alert,
+  Jumbotron,
+  Card,
+  CardBody,
+  Button,
+  FormGroup
+} from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Link } from "react-router-dom";
+import Updates from "./updates";
 
 export default class Contact extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      name: "",
+      contactEmail: "",
+      message: ""
+    };
   }
 
   handleValidSubmit = (event, values) => {
     this.setState({ values });
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("contactEmail").value;
-    const message = document.getElementById("message").value;
+    const name = this.state.name;
+    const email = this.state.contactEmail;
+    const message = this.state.message;
     fetch("./includes/contact.inc.php", {
       method: "POST",
       mode: "same-origin",
@@ -28,8 +41,35 @@ export default class Contact extends Component {
       })
     })
       .then(response => response.json())
-      .then(result => console.log(result))
-      .catch(error => console.error(error));
+      .then(result => {
+        const alertElement = document.getElementById("alert-div");
+        const body = document.getElementById("body");
+        if (result.success === true) {
+          ReactDOM.render(
+            <Alert color="success">{result.message}</Alert>,
+            alertElement
+          );
+          setTimeout(() => {
+            ReactDOM.render(<Updates />, body);
+          }, 2500);
+        }
+      })
+      .catch(error => {
+        const alertElement = document.getElementById("alert-div");
+        ReactDOM.render(
+          <Alert color="danger">
+            There seems to have been an error sending your message. Please try
+            again later.
+          </Alert>,
+          alertElement
+        );
+      });
+  };
+
+  handleChange = e => {
+    let change = {};
+    change[e.target.name] = e.target.value;
+    this.setState(change);
   };
 
   render() {
@@ -53,6 +93,8 @@ export default class Contact extends Component {
                       errorMessage: "Please enter your name"
                     }
                   }}
+                  onChange={this.handleChange}
+                  value={this.state.name}
                 />
                 <AvField
                   name="contactEmail"
@@ -62,6 +104,8 @@ export default class Contact extends Component {
                   validate={{
                     required: { value: true }
                   }}
+                  onChange={this.handleChange}
+                  value={this.state.contactEmail}
                 />
                 <AvField
                   name="message"
@@ -74,10 +118,13 @@ export default class Contact extends Component {
                       errorMessage: "Please enter your message"
                     }
                   }}
+                  onChange={this.handleChange}
+                  value={this.state.message}
                 />
                 <hr />
                 <div className="text-right">
                   <FormGroup>
+                    <div id="alert-div" />
                     <Link to="/">
                       <Button>Cancel</Button>
                     </Link>

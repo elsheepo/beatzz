@@ -47,7 +47,6 @@ export default class LoginForm extends Component {
         }
       })
       .catch(error => {
-        console.log(error);
         const alertElement = document.getElementById("alert-div");
         ReactDOM.render(
           <Alert color="danger">
