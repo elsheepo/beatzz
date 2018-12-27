@@ -14,7 +14,11 @@ export default class Docs extends Component {
             <div className="row">
               <div className="col-sm-2 align-items-center h-100">
                 <div className="img-container">
-                  <a href="docs/Slackware%20Package%20Management.pdf">
+                  <a
+                    href="docs/Slackware%20Package%20Management.pdf"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
                     <img id="docImg" src="./img/doc_icon.png" alt="document" />
                   </a>
                 </div>
