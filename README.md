@@ -2,7 +2,7 @@
 
 ![](https://github.com/elsheepo/beatzz.co/blob/master/src/img/blacksheep.png?raw=true)
 
-![](https://img.shields.io/github/stars/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/forks/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/tag/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/release/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/issues/elsheepo/beatzz.co.svg)
+![](https://img.shields.io/github/stars/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/forks/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/tag/elsheepo/beatzz.co.svg) ![](https://img.shields.io/github/issues/elsheepo/beatzz.co.svg)
 
 This project began in November 2017 with the simple goal of self learning front-end web design. I quickly realized the need for JavaScript, and server side languages and database applications (PHP and MySQL). I struggled with WebPack for a while, then eventually ran into React. Now the goal is continue expanding the horizon, utilize modern frameworks and libraries, and inevitably land a career as a full-stack, SPA developer.
 
