@@ -101,7 +101,7 @@ export default class Projects extends Component {
                   <i>Windows</i>:{" "}
                   <a
                     href="downloads/sqlite-db-mgr-1.0.zip"
-                    download="sqlite-db-mgr-1.0.rar"
+                    download="sqlite-db-mgr-1.0.zip"
                   >
                     <u>sqlite-db-mgr-1.0.zip</u>
                   </a>
