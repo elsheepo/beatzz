@@ -29,7 +29,14 @@ export default class Projects extends Component {
               </div>
               <div className="col-sm-10 text-left">
                 <p>
-                  <i>Name</i>: Convertron
+                  <i>Name</i>:{" "}
+                  <a
+                    href="https://github.com/elsheepo/Convertron"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Convertron
+                  </a>
                   <br />
                   <i>Author</i>: beatzz
                   <br />
@@ -38,15 +45,15 @@ export default class Projects extends Component {
                   <br />
                   <i>Windows</i>:{" "}
                   <a
-                    href="downloads/java/convertron-1.0.rar"
+                    href="downloads/convertron-1.0.zip"
                     download="convertron-1.0.rar"
                   >
-                    <u>convertron-1.0.rar</u>
+                    <u>convertron-1.0.zip</u>
                   </a>
                   <br />
                   <i>Linux</i>:{" "}
                   <a
-                    href="downloads/java/convertron-1.0.tar.bz2"
+                    href="downloads/convertron-1.0.tar.bz2"
                     download="convertron-1.0.tar.bz2"
                   >
                     <u>convertron-1.0.tar.bz2</u>
@@ -75,7 +82,14 @@ export default class Projects extends Component {
               <br />
               <div className="col-sm-10 text-left">
                 <p>
-                  <i>Name</i>: SQLite-Database-Manager
+                  <i>Name</i>:{" "}
+                  <a
+                    href="https://github.com/elsheepo/SQLite-Database-Manager"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    SQLite-Database-Manager
+                  </a>
                   <br />
                   <i>Author</i>: beatzz
                   <br />
@@ -83,28 +97,22 @@ export default class Projects extends Component {
                   SQLite database, and dynamically display the tables, columns,
                   and values therein, allowing the user to add, remove, or
                   update entries as well.
-                </p>
-              </div>
-            </div>
-            <br />
-
-            <div className="row">
-              <div className="col-sm-2">
-                <div className="img-container">
-                  <img
-                    className="float-left"
-                    src="./img/bitcoin.png"
-                    alt="Bitcoin"
-                  />
-                </div>
-              </div>
-              <div className="col-sm-10 text-left">
-                <p>
-                  <i>Name</i>: Coin
                   <br />
-                  <i>Author</i>: beatzz
+                  <i>Windows</i>:{" "}
+                  <a
+                    href="downloads/sqlite-db-mgr-1.0.zip"
+                    download="sqlite-db-mgr-1.0.rar"
+                  >
+                    <u>sqlite-db-mgr-1.0.zip</u>
+                  </a>
                   <br />
-                  <i>About</i>: Web UI for Bitcoin mining.
+                  <i>Linux</i>:{" "}
+                  <a
+                    href="downloads/sqlite-db-mgr-1.0.tar.bz2"
+                    download="sqlite-db-mgr-1.0.tar.bz2"
+                  >
+                    <u>sqlite-db-mgr-1.0.tar.bz2</u>
+                  </a>
                 </p>
               </div>
             </div>
@@ -114,13 +122,65 @@ export default class Projects extends Component {
               <div className="col-sm-2">
                 <div className="img-container">
                   <a
-                    href="./hackware/index.html"
+                    href="https://github.com/elsheepo/Blackjack"
                     rel="noopener noreferrer"
                     target="_blank"
                   >
                     <img
                       className="float-left"
-                      src="./img/skull.png"
+                      src="./img/blackjack.png"
+                      alt="blackjack"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div className="col-sm-10 text-left">
+                <p>
+                  <i>Name</i>:{" "}
+                  <a
+                    href="https://github.com/elsheepo/Blackjack"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Blackjack
+                  </a>
+                  <br />
+                  <i>Author</i>: beatzz
+                  <br />
+                  <i>About</i>: A console based game of Blackjack written in
+                  Java, demonstrating solid Object Orientated Programming.
+                  <br />
+                  <i>Windows</i>:{" "}
+                  <a
+                    href="downloads/blackjack-1.0.zip"
+                    download="blackjack-1.0.zip"
+                  >
+                    <u>blackjack-1.0.zip</u>
+                  </a>
+                  <br />
+                  <i>Linux</i>:{" "}
+                  <a
+                    href="downloads/blackjack-1.0.tar.bz2"
+                    download="blackjack-1.0.tar.bz2"
+                  >
+                    <u>blackjack-1.0.tar.bz2</u>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <br />
+
+            <div className="row">
+              <div className="col-sm-2">
+                <div className="img-container">
+                  <a
+                    href="./smlinux.html"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      className="float-left"
+                      src="./img/slackware-musl.png"
                       alt="Hackware"
                     />
                   </a>
@@ -128,14 +188,13 @@ export default class Projects extends Component {
               </div>
               <div className="col-sm-10 text-left">
                 <p>
-                  <i>Name</i>: Hackware Linux
+                  <i>Name</i>: smLinux
                   <br />
-                  <i>Co-Conspirators</i>: wigums & beatzz
+                  <i>Co-Conspirators</i>: SkyroveRR & beatzz
                   <br />
                   <i>About</i>: A Linux distribution designed with simplicity,
-                  stability, and sophistication in mind. For the advanced
-                  administrator, the horrendous hacker, and the dedicated
-                  developer!
+                  stability, and sophistication in mind. Based largely on
+                  Slackware Linux, utilizing the power of musl-libc!
                 </p>
               </div>
             </div>

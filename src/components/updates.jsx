@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Jumbotron, Card } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default class Updates extends Component {
   render() {
@@ -12,6 +13,7 @@ export default class Updates extends Component {
           <p className="text-primary varela-round">UPDATES</p>
           {/* prettier-ignore */}
           <Card>
+            <p><u><b>1/5/2019</b></u><br />Updated all the projects on the <Link to="/projects"><span className="pointer">Projects</span></Link> page to include working downloadable archives, so you can see some of my Java work in action, please enjoy!  -beatzz</p>
             <p><u><b>12/21/2018</b></u><br />Over a year in development! migration to <a href="https://reactstrap.github.io/" rel="noopener noreferrer" target="_blank">reactstrap</a> finished, also implemented <a href="https://reacttraining.com/react-router/" rel="noopener noreferrer" target="_blank">react-router</a> so now each "page" has it's own URL.  I also got all the forms functional, with <a href="https://availity.github.io/availity-reactstrap-validation/" rel="noopener noreferrer" target="_blank">validation</a>, and cleaned up the PHP on the backend. Finally, I uploaded all of this sites source code to a <a href="https://github.com/elsheepo/beatzz.co" rel="noopener noreferrer" target="_blank">github repository</a>, feel free to inspect and comment! Merry Christmas everyone, and a happy New Year!  -beatzz</p>
             <p><u><b>10/30/2018</b></u><br />Migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a> finished, only to realize I want to use <a href="https://reactstrap.github.io/" rel="noopener noreferrer" target="_blank">reactstrap</a> instead :p. Forms will be temporarily down while I rewrite the back end with <a href="https://nodejs.org/en/" rel="noopener noreferrer" target="_blank">Node.js</a>. I'll be taking a month off from development to prepare for the <a href="https://www.jlpt.jp/e/" rel="noopener noreferrer" target="_blank">JLPT</a>, wish me luck! See you again in December! -beatzz</p>
             <p><u><b>10/13/2018</b></u><br />Began the migration to <a href="https://react-bootstrap.github.io/" rel="noopener noreferrer" target="_blank">react-bootstrap</a>. -beatzz</p>
