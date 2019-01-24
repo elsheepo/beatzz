@@ -19,7 +19,7 @@ export default class Docs extends Component {
                     rel="noopener noreferrer"
                     target="_blank"
                   >
-                    <img id="docImg" src="./img/doc_icon.png" alt="document" />
+                    <img id="docImg" src="./img/doc-icon.png" alt="document" />
                   </a>
                 </div>
               </div>
@@ -32,7 +32,7 @@ export default class Docs extends Component {
                   <br />
                   <i>Download</i>:{" "}
                   <a
-                    href="documents/Slackware%20Package%20Management.pdf"
+                    href="docs/Slackware%20Package%20Management.pdf"
                     download="Slackware Package Management.pdf"
                   >
                     <u>Slackware Package Management.pdf</u>
