@@ -56,6 +56,14 @@ if ($sql->rowCount() > 0) {
     header('Content-type: application/json');
     echo json_encode($promise);
 
+    //$to = $email;
+    //$email_subject = "Welcome to beatzz.co $firstName";
+    //$email_body = "Thank you for signing up!\n";
+    //$headers = "From: noreply@beatzz.co\n";
+
+    // send welcoming email
+    //mail($to, $email_subject, $email_body, $headers);
+
 }
 
 exit;

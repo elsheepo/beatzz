@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { connect } from "react-redux";
+import { login } from "../redux/actions";
 import { Alert, Button, FormGroup } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import PropTypes from "prop-types";
 
-export default class LoginForm extends Component {
+class LoginForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +45,8 @@ export default class LoginForm extends Component {
             alertElement
           );
           setTimeout(() => this.props.unmount(), 1500);
-          this.props.toggleLogin();
+          //this.props.toggleLogin();
+          this.handleLogin();
         }
       })
       .catch(error => {
@@ -57,6 +60,10 @@ export default class LoginForm extends Component {
         );
       });
   };
+
+  handleLogin = () => {
+    this.props.login()
+  }
 
   handleChange = e => {
     let change = {};
@@ -100,7 +107,7 @@ export default class LoginForm extends Component {
           <FormGroup>
             <div id="alert-div" />
             <Button onClick={this.props.unmount}>cancel</Button>
-            <Button color="primary">Submit</Button>
+            <Button color="primary" onClick={this.handleLogin}>Submit</Button>
           </FormGroup>
         </div>
       </AvForm>
@@ -108,7 +115,13 @@ export default class LoginForm extends Component {
   }
 }
 
+export default connect(
+  null,
+  { login }
+)(LoginForm);
+
 LoginForm.propTypes = {
   unmount: PropTypes.func,
-  toggleLogin: PropTypes.func
+  toggleLogin: PropTypes.func,
+  login: PropTypes.func
 };
