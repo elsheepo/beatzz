@@ -123,5 +123,6 @@ export default connect(
 LoginForm.propTypes = {
   unmount: PropTypes.func,
   toggleLogin: PropTypes.func,
-  login: PropTypes.func
+  login: PropTypes.func,
+  logout: PropTypes.func
 };

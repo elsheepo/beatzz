@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { logout } from "../redux/actions";
 import PropTypes from "prop-types";
 import {
   Collapse,
@@ -11,6 +12,7 @@ import {
   NavItem
 } from "reactstrap";
 import FontAwesome from "react-fontawesome";
+
 
 
 const InactiveSession = (props) => {
@@ -42,21 +44,31 @@ InactiveSession.propTypes = {
   displayLoginClicked: PropTypes.func
 };
 
-const ActiveSession = (props) => {
-  return (
-    <Nav className="ml-auto" navbar>
-      <NavItem id="homeAnchor" className="pointer">
-        <span className="nav-link">
-          <FontAwesome name="home" /> Home
-        </span>
-      </NavItem>
-      <NavItem id="logoutAnchor" className="pointer" onClick={props.logout}>
-        <span className="nav-link">
-          <FontAwesome name="sign-out" /> Logout
-        </span>
-      </NavItem>
-    </Nav>
-  );
+class ActiveSession extends Component {
+  constructor(props) {
+  super(props);
+  }
+
+  handleLogout = () => {
+    logout()
+  }
+
+  render() {
+    return (
+      <Nav className="ml-auto" navbar>
+        <NavItem id="homeAnchor" className="pointer">
+          <span className="nav-link">
+            <FontAwesome name="home" /> Home
+          </span>
+        </NavItem>
+        <NavItem id="logoutAnchor" className="pointer" onClick={this.handleLogout}>
+          <span className="nav-link">
+            <FontAwesome name="sign-out" /> Logout
+          </span>
+        </NavItem>
+      </Nav>
+    );
+  }
 }
 ActiveSession.propTypes = {
   logout: PropTypes.bool
@@ -71,6 +83,7 @@ class NavBar extends Component {
       collapseOnSelect: true
     };
   }
+
   toggle = () => {
     this.setState({
       isOpen: !this.state.isOpen
@@ -78,7 +91,6 @@ class NavBar extends Component {
   };
 
   render() {
-    //const isLoggedIn = this.props.isLoggedIn;
     const loggedIn = this.props.loggedIn
     let loginControl;
 
@@ -148,8 +160,9 @@ NavBar.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const { loggedIn } = state.loggedIn;
-  return { loggedIn };
+  return { 
+    loggedIn: state.loggedIn 
+  };
 }
 
-export default connect(mapStateToProps)(Navbar)
+export default connect(mapStateToProps)(NavBar)
