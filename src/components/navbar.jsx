@@ -44,10 +44,6 @@ InactiveSession.propTypes = {
 };
 
 class ActiveSession extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleLogout = () => {
     this.props.logout();
   };
