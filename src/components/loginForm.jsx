@@ -45,7 +45,6 @@ class LoginForm extends Component {
             alertElement
           );
           setTimeout(() => this.props.unmount(), 1500);
-          //this.props.toggleLogin();
           this.handleLogin();
         }
       })
@@ -62,8 +61,8 @@ class LoginForm extends Component {
   };
 
   handleLogin = () => {
-    this.props.login()
-  }
+    this.props.login();
+  };
 
   handleChange = e => {
     let change = {};
@@ -107,7 +106,7 @@ class LoginForm extends Component {
           <FormGroup>
             <div id="alert-div" />
             <Button onClick={this.props.unmount}>cancel</Button>
-            <Button color="primary" onClick={this.handleLogin}>Submit</Button>
+            <Button color="primary">Submit</Button>
           </FormGroup>
         </div>
       </AvForm>
@@ -122,7 +121,6 @@ export default connect(
 
 LoginForm.propTypes = {
   unmount: PropTypes.func,
-  toggleLogin: PropTypes.func,
   login: PropTypes.func,
   logout: PropTypes.func
 };

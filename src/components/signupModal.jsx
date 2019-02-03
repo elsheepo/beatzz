@@ -58,10 +58,7 @@ export default class Signup extends Component {
               <p className="text-primary text-center varela-round">SIGNUP</p>
             </ModalHeader>
             <ModalBody>
-              <SignupForm
-                unmount={this.props.unmount}
-                toggleLogin={this.props.toggleLogin}
-              />
+              <SignupForm unmount={this.props.unmount} />
             </ModalBody>
           </div>
         </Modal>
@@ -73,6 +70,5 @@ export default class Signup extends Component {
 Signup.propTypes = {
   display: PropTypes.bool,
   className: PropTypes.string,
-  unmount: PropTypes.func,
-  toggleLogin: PropTypes.func
+  unmount: PropTypes.func
 };

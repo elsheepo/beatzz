@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import { connect } from "react-redux";
+import { login } from "../redux/actions";
 import { Card, FormGroup, Button, Alert } from "reactstrap";
 import {
   AvForm,
@@ -11,7 +13,7 @@ import PrivacyNotice from "./privacyNotice";
 import PropTypes from "prop-types";
 import _debounce from "lodash.debounce";
 
-export default class SignupForm extends Component {
+class SignupForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,7 +68,7 @@ export default class SignupForm extends Component {
             alertElement
           );
           setTimeout(() => this.props.unmount(), 1500);
-          this.props.toggleLogin();
+          this.handleLogin();
         }
       })
       .catch(error => {
@@ -79,6 +81,10 @@ export default class SignupForm extends Component {
           alertElement
         );
       });
+  };
+
+  handleLogin = () => {
+    this.props.login();
   };
 
   toggle = () => {
@@ -149,10 +155,15 @@ export default class SignupForm extends Component {
 }
 
 SignupForm.propTypes = {
+  login: PropTypes.func,
   unmount: PropTypes.func,
-  displayPrivacy: PropTypes.bool,
-  toggleLogin: PropTypes.func
+  displayPrivacy: PropTypes.bool
 };
+
+export default connect(
+  null,
+  { login }
+)(SignupForm);
 
 class Fields extends Component {
   constructor(props) {

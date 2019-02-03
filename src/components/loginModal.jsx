@@ -58,10 +58,7 @@ export default class Login extends Component {
               <p className="text-primary text-center varela-round">LOGIN</p>
             </ModalHeader>
             <ModalBody>
-              <LoginForm
-                unmount={this.props.unmount}
-                toggleLogin={this.props.toggleLogin}
-              />
+              <LoginForm unmount={this.props.unmount} />
             </ModalBody>
           </div>
         </Modal>
@@ -73,6 +70,5 @@ export default class Login extends Component {
 Login.propTypes = {
   display: PropTypes.bool,
   className: PropTypes.string,
-  unmount: PropTypes.func,
-  toggleLogin: PropTypes.func
+  unmount: PropTypes.func
 };

@@ -10,6 +10,7 @@ This project began in November 2017 with the simple goal of self learning front-
 
 - "availity-reactstrap-validation": "^2.3.3",
 - "bootstrap": "^4.1.3",
+- "lodash.debounce": "4.0.8",
 - "node-sass": "^4.11.0",
 - "prop-types": "^15.6.2",
 - "react": "^16.7.0-alpha.2",
@@ -30,6 +31,6 @@ you can view the current progress on my server at https://www.beatzz.co/
 ## :clipboard: to do list
 
 - [ ] utilize react hooks
-- [ ] integrate redux/react-redux
+- [x] integrate redux/react-redux
 - [ ] general component & package cleanup
 - [ ] final release inspection

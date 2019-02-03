@@ -13,9 +13,7 @@ import {
 } from "reactstrap";
 import FontAwesome from "react-fontawesome";
 
-
-
-const InactiveSession = (props) => {
+const InactiveSession = props => {
   return (
     <Nav className="ml-auto" navbar>
       <NavItem
@@ -38,7 +36,8 @@ const InactiveSession = (props) => {
       </NavItem>
     </Nav>
   );
-}
+};
+
 InactiveSession.propTypes = {
   displaySignupClicked: PropTypes.func,
   displayLoginClicked: PropTypes.func
@@ -46,12 +45,12 @@ InactiveSession.propTypes = {
 
 class ActiveSession extends Component {
   constructor(props) {
-  super(props);
+    super(props);
   }
 
   handleLogout = () => {
-    logout()
-  }
+    this.props.logout();
+  };
 
   render() {
     return (
@@ -61,7 +60,11 @@ class ActiveSession extends Component {
             <FontAwesome name="home" /> Home
           </span>
         </NavItem>
-        <NavItem id="logoutAnchor" className="pointer" onClick={this.handleLogout}>
+        <NavItem
+          id="logoutAnchor"
+          className="pointer"
+          onClick={this.handleLogout}
+        >
           <span className="nav-link">
             <FontAwesome name="sign-out" /> Logout
           </span>
@@ -70,9 +73,15 @@ class ActiveSession extends Component {
     );
   }
 }
+
 ActiveSession.propTypes = {
   logout: PropTypes.bool
 };
+
+const ConnectedActiveSession = connect(
+  null,
+  { logout }
+)(ActiveSession);
 
 class NavBar extends Component {
   constructor(props) {
@@ -91,15 +100,12 @@ class NavBar extends Component {
   };
 
   render() {
-    const loggedIn = this.props.loggedIn
+    const loggedIn = this.props.loggedIn;
     let loginControl;
 
     if (loggedIn) {
       loginControl = (
-        <ActiveSession
-          className="d-flex justify-content-end"
-          logout={this.props.toggleLogin}
-        />
+        <ConnectedActiveSession className="d-flex justify-content-end" />
       );
     } else {
       loginControl = (
@@ -151,18 +157,17 @@ class NavBar extends Component {
     );
   }
 }
+
 NavBar.propTypes = {
   loggedIn: PropTypes.bool,
-  isLoggedIn: PropTypes.bool,
-  toggleLogin: PropTypes.func,
   displayLoginClicked: PropTypes.func,
   displaySignupClicked: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
-  return { 
-    loggedIn: state.loggedIn 
+const mapStateToProps = state => {
+  return {
+    loggedIn: state.loggedIn
   };
-}
+};
 
-export default connect(mapStateToProps)(NavBar)
+export default connect(mapStateToProps)(NavBar);

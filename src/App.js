@@ -17,20 +17,16 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false,
       displayLogin: false,
       displaySignup: false,
       displayPrivacy: false
     };
   }
 
-  toggleLogin = () => {
-    this.setState({ isLoggedIn: !this.state.isLoggedIn });
-  };
-
   displayLoginHandler = () => {
     this.setState({ displayLogin: true });
   };
+
   hideLoginHandler = () => {
     this.setState({ displayLogin: false });
   };
@@ -38,6 +34,7 @@ export default class App extends Component {
   displaySignupHandler = () => {
     this.setState({ displaySignup: true });
   };
+
   hideSignupHandler = () => {
     this.setState({ displaySignup: false });
   };
@@ -45,12 +42,12 @@ export default class App extends Component {
   displayPrivacyHandler = () => {
     this.setState({ displayPrivacy: true });
   };
+
   hidePrivacyHandler = () => {
     this.setState({ displayPrivacy: false });
   };
 
   render() {
-    const isLoggedIn = this.state.isLoggedIn;
     const displayLoginModal = this.state.displayLogin;
     const displaySignupModal = this.state.displaySignup;
     const displayPrivacyModal = this.state.displayPrivacy;
@@ -59,8 +56,6 @@ export default class App extends Component {
       <Router>
         <React.Fragment>
           <NavBar
-            isLoggedIn={isLoggedIn}
-            toggleLogin={this.toggleLogin}
             displayLoginClicked={this.displayLoginHandler}
             displaySignupClicked={this.displaySignupHandler}
           />
@@ -81,13 +76,11 @@ export default class App extends Component {
           <Login
             display={displayLoginModal}
             unmount={this.hideLoginHandler}
-            toggleLogin={this.toggleLogin}
           />
           <Signup
             display={displaySignupModal}
             displayPrivacy={displayPrivacyModal}
             unmount={this.hideSignupHandler}
-            toggleLogin={this.toggleLogin}
           />
           <Privacy
             display={displayPrivacyModal}
