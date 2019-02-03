@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import {
   Collapse,
@@ -9,9 +11,9 @@ import {
   NavItem
 } from "reactstrap";
 import FontAwesome from "react-fontawesome";
-import { Link } from "react-router-dom";
 
-function InactiveSession(props) {
+
+const InactiveSession = (props) => {
   return (
     <Nav className="ml-auto" navbar>
       <NavItem
@@ -40,7 +42,7 @@ InactiveSession.propTypes = {
   displayLoginClicked: PropTypes.func
 };
 
-function ActiveSession(props) {
+const ActiveSession = (props) => {
   return (
     <Nav className="ml-auto" navbar>
       <NavItem id="homeAnchor" className="pointer">
@@ -57,10 +59,10 @@ function ActiveSession(props) {
   );
 }
 ActiveSession.propTypes = {
-  onClick: PropTypes.bool
+  logout: PropTypes.bool
 };
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -76,7 +78,8 @@ export default class NavBar extends Component {
   };
 
   render() {
-    const isLoggedIn = this.props.isLoggedIn;
+    //const isLoggedIn = this.props.isLoggedIn;
+    const isLoggedIn = this.props.loggedIn
     let loginControl;
 
     if (isLoggedIn) {
@@ -137,8 +140,16 @@ export default class NavBar extends Component {
   }
 }
 NavBar.propTypes = {
+  loggedIn: PropTypes.bool,
   isLoggedIn: PropTypes.bool,
   toggleLogin: PropTypes.func,
   displayLoginClicked: PropTypes.func,
   displaySignupClicked: PropTypes.func
 };
+
+const mapStateToProps = (state) => {
+  const { loggedIn } = state.loggedIn;
+  return { loggedIn };
+}
+
+export default connect(mapStateToProps)(Navbar)
