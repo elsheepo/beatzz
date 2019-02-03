@@ -79,10 +79,10 @@ class NavBar extends Component {
 
   render() {
     //const isLoggedIn = this.props.isLoggedIn;
-    const isLoggedIn = this.props.loggedIn
+    const loggedIn = this.props.loggedIn
     let loginControl;
 
-    if (isLoggedIn) {
+    if (loggedIn) {
       loginControl = (
         <ActiveSession
           className="d-flex justify-content-end"
