@@ -43,31 +43,25 @@ InactiveSession.propTypes = {
     displayLoginClicked: PropTypes.func,
 }
 
-class ActiveSession extends Component {
-    handleLogout = () => {
-        this.props.logout()
-    }
-
-    render() {
-        return (
-            <Nav className="ml-auto" navbar>
-                <NavItem id="homeAnchor" className="pointer">
-                    <span className="nav-link">
-                        <FontAwesome name="home" /> Home
-                    </span>
-                </NavItem>
-                <NavItem
-                    id="logoutAnchor"
-                    className="pointer"
-                    onClick={this.handleLogout}
-                >
-                    <span className="nav-link">
-                        <FontAwesome name="sign-out" /> Logout
-                    </span>
-                </NavItem>
-            </Nav>
-        )
-    }
+const ActiveSession = props => {
+    return (
+        <Nav className="ml-auto" navbar>
+            <NavItem id="homeAnchor" className="pointer">
+                <span className="nav-link">
+                    <FontAwesome name="home" /> Home
+                </span>
+            </NavItem>
+            <NavItem
+                id="logoutAnchor"
+                className="pointer"
+                onClick={props.logout}
+            >
+                <span className="nav-link">
+                    <FontAwesome name="sign-out" /> Logout
+                </span>
+            </NavItem>
+        </Nav>
+    )
 }
 
 ActiveSession.propTypes = {
