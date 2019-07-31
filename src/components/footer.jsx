@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 const footerStyle = {
@@ -23,23 +23,21 @@ const phantomStyle = {
   width: "100%"
 };
 
-export default class Footer extends Component {
-  render() {
-    return (
-      <footer>
-        <div style={phantomStyle} />
-        <div style={footerStyle}>
-          <p>
-            &copy; 2017-{new Date().getFullYear()} beatzz.co{" "}
-            <span className="pointer" onClick={this.props.displayPrivacy}>
-              Terms & Privacy
-            </span>
-          </p>
-        </div>
-      </footer>
-    );
-  }
-}
+export const Footer = props => {
+  return (
+    <footer>
+      <div style={phantomStyle} />
+      <div style={footerStyle}>
+        <p>
+          &copy; 2017-{new Date().getFullYear()} beatzz.co{" "}
+          <span className="pointer" onClick={props.displayPrivacy}>
+            Terms & Privacy
+          </span>
+        </p>
+      </div>
+    </footer>
+  );
+};
 Footer.propTypes = {
   displayPrivacy: PropTypes.func
 };

@@ -3,12 +3,12 @@ import { Container, Row, Col } from "reactstrap";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import NavBar from "./components/navbar";
-import Contact from "./components/contact";
-import Docs from "./components/docs";
-import Links from "./components/links";
+import Contact from "./components/contactForm";
+import { Docs } from "./components/docs";
+import { Links } from "./components/links";
 import Projects from "./components/projects";
-import Updates from "./components/updates";
-import Footer from "./components/footer";
+import { Updates } from "./components/updates";
+import { Footer } from "./components/footer";
 import Privacy from "./components/privacyModal";
 import Signup from "./components/signupModal";
 import Login from "./components/loginModal";

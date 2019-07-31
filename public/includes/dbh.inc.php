@@ -17,8 +17,8 @@
 
  // initialize variables
 $servername = "localhost";
-$username = "root";
-$password = "";
+$username = "phpmyadmin";
+$password = ""; /* enter database password here */
 $database = "login";
 
 // establish a connection to the database

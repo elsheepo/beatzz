@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Card, Modal, ModalHeader, ModalBody } from "reactstrap";
 import PropTypes from "prop-types";
-import PrivacyNotice from "./privacyNotice";
+import { PrivacyNotice } from "./privacyNotice";
 
 export default class Privacy extends Component {
   constructor(props) {

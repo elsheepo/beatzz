@@ -1,18 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import { Jumbotron, Card } from "reactstrap";
 import { Link } from "react-router-dom";
 
-export default class Updates extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Jumbotron>
-          <div className="img-container">
-            <img id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
-          </div>
-          <p className="text-primary varela-round">UPDATES</p>
-          {/* prettier-ignore */}
-          <Card>
+export const Updates = () => {
+  return (
+    <React.Fragment>
+      <Jumbotron>
+        <div className="img-container">
+          <img id="blacksheep" src="./img/blacksheep.png" alt="blacksheep" />
+        </div>
+        <p className="text-primary varela-round">UPDATES</p>
+        {/* prettier-ignore */}
+        <Card>
+            <p><u><b>7/30/2019</b></u><br /> Got subdomains and TSL/SSL configured for <a href="https://www.nginx.com/" rel="noopener noreferrer" target="_blank">nginx</a>, so the mail server can be access at <a href="https://mail.beatzz.co/" rel="noopener noreferrer" target="_blank">mail.beatzz.co</a> if you have registered for one. All forms seem to up and running at the moment. I am working on Universal Routing, aka: Polymorphic JavaScript Server-Side Rendering... wish me luck... -beatzz</p>
             <p><u><b>7/17/2019</b></u><br />Proud to announce the launch of <a href="https://rydanpainting.com/" rel="noopener noreferrer" target="_blank">rydanpainting.com</a>!🎉  -beatzz</p>
             <p><u><b>2/3/2019</b></u><br />Finally implemented <a href="https://redux.js.org/" rel="noopener noreferrer" target="_blank">Redux</a> into the application! Also, I destroyed the user database the other week while updating <a href="https://www.mysql.com/" rel="noopener noreferrer" target="_blank">MySQL</a>. Perhaps the worst mistake an admin can make 😱 but it is up and running again, so please try out the new signup form and re-register for exclusive content!! -beatzz</p>
             <p><u><b>1/5/2019</b></u><br />Updated all the projects on the <Link to="/projects"><span className="pointer">Projects</span></Link> page to include working downloadable archives, so you can see some of my Java work in action, please enjoy!  -beatzz</p>
@@ -36,8 +36,7 @@ export default class Updates extends Component {
             <p><u><b>12/18/2017</b></u><br />Worked on the HTML and CSS, dialed in the sticky footer & the collapsed navigation menu.  -beatzz</p>
             <p><u><b>12/17/2017</b></u><br />Animated the collapsed navigation menu button.  -beatzz</p>
           </Card>
-        </Jumbotron>
-      </React.Fragment>
-    );
-  }
-}
+      </Jumbotron>
+    </React.Fragment>
+  );
+};

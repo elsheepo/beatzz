@@ -1,6 +1,6 @@
 import React from "react";
 
-const PrivacyNotice = props => {
+export const PrivacyNotice = () => {
   return (
     <React.Fragment>
       <p>
@@ -164,5 +164,3 @@ const PrivacyNotice = props => {
     </React.Fragment>
   );
 };
-
-export default PrivacyNotice;

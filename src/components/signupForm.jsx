@@ -9,7 +9,7 @@ import {
   AvGroup,
   AvInput
 } from "availity-reactstrap-validation";
-import PrivacyNotice from "./privacyNotice";
+import { PrivacyNotice } from "./privacyNotice";
 import PropTypes from "prop-types";
 import _debounce from "lodash.debounce";
 
