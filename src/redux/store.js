@@ -1,4 +1,4 @@
-import { createStore } from "redux";
-import rootReducer from "./reducer";
+import { createStore } from 'redux'
+import rootReducer from './reducer'
 
-export default createStore(rootReducer);
+export default createStore(rootReducer)
