@@ -25,7 +25,7 @@ $name = $decoded->name;
 $email_address = $decoded->email;
 $message = $decoded->message;
 
-$to = 'beatzz@LIVA';
+$to = 'earnold@beatzz.co';
 $email_subject = "Website Contact Form:  $name";
 $email_body = "You have received a new message from your website contact form.\n";
 $email_body .= "Here are the details:\n";
@@ -36,12 +36,16 @@ $headers = "From: noreply@beatzz.co\n";
 $headers .= "Reply-To: $email_address";
 
 // send email
-mail($to, $email_subject, $email_body, $headers);
+$data = mail($to, $email_subject, $email_body, $headers) ? 
+[ 'success' => true, 'message' => "message sent!" ] : 
+[ 'success' => false, 'message' => "delivery failed!" ];
 
 // return promise
-$data['success'] = true;
-$data['message'] = "Message received!";
-header('Content-type: application/json');
-echo json_encode($data);
-
+if ($response = json_encode($data)) {
+    header('Content-type: application/json');
+    echo $response;
+} else {
+    header('Content-type: text/plain');
+    echo $data;
+}
 exit;

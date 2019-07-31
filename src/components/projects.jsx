@@ -9,7 +9,7 @@ export default class Projects extends Component {
           <div className="img-container">
             <img id="blacksheep" src="img/blacksheep.png" alt="blacksheep" />
           </div>
-          <p className="text-center text-primary varela-round"> PROJECTS </p>
+          <p className="text-center text-primary varela-round">PROJECTS</p>
           <Card>
             <div className="row">
               <div className="col-sm-2">
@@ -195,6 +195,41 @@ export default class Projects extends Component {
                   <i>About</i>: A Linux distribution designed with simplicity,
                   stability, and sophistication in mind. Based largely on
                   Slackware Linux, utilizing the power of musl-libc!
+                </p>
+              </div>
+            </div>
+            <br />
+
+            <div className="row">
+              <div className="col-sm-2">
+                <div className="img-container">
+                  <a
+                    href="https://rydanpainting.com"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <img
+                      className="float-left"
+                      src="./img/rydanpainting.png"
+                      alt="GitHub"
+                    />
+                  </a>
+                </div>
+              </div>
+              <div className="col-sm-10 text-left">
+                <p>
+                  <i>Name</i>:{" "}
+                  <a
+                    href="https://rydanpainting.com"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    https://rydanpainting.com
+                  </a>
+                  <br />
+                  <i>Author</i>: beatzz
+                  <br />
+                  <i>About</i>: Another successful web application :)
                 </p>
               </div>
             </div>

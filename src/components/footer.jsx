@@ -30,7 +30,7 @@ export default class Footer extends Component {
         <div style={phantomStyle} />
         <div style={footerStyle}>
           <p>
-            &copy; 2017-2019 beatzz.co{" "}
+            &copy; 2017-{new Date().getFullYear()} beatzz.co{" "}
             <span className="pointer" onClick={this.props.displayPrivacy}>
               Terms & Privacy
             </span>

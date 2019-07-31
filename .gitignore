@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 
@@ -19,3 +17,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/public/docs/*.pdf
+/public/downloads/*.bz2
+/public/downloads/*.zip
+/public/img/*.png
+
+./package-lock.json

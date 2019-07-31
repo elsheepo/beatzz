@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 import { AvForm, AvField } from "availity-reactstrap-validation";
 import { Link } from "react-router-dom";
-import Updates from "./updates";
 
 export default class Contact extends Component {
   constructor(props) {
@@ -42,20 +41,25 @@ export default class Contact extends Component {
     })
       .then(response => response.json())
       .then(result => {
+        // console.log(result);
+
         const alertElement = document.getElementById("alert-div");
-        const body = document.getElementById("body");
+
         if (result.success === true) {
           ReactDOM.render(
             <Alert color="success">{result.message}</Alert>,
             alertElement
           );
           setTimeout(() => {
-            ReactDOM.render(<Updates />, body);
+            window.location.replace("https://www.beatzz.co");
           }, 2500);
         }
       })
       .catch(error => {
+        // console.log(error);
+
         const alertElement = document.getElementById("alert-div");
+
         ReactDOM.render(
           <Alert color="danger">
             There seems to have been an error sending your message. Please try
@@ -63,6 +67,9 @@ export default class Contact extends Component {
           </Alert>,
           alertElement
         );
+        setTimeout(() => {
+          window.location.replace("https://www.beatzz.co");
+        }, 2500);
       });
   };
 

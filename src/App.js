@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col } from "reactstrap";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import NavBar from "./components/navbar";
 import Contact from "./components/contact";
@@ -63,20 +63,19 @@ export default class App extends Component {
             <Row>
               <Col />
               <Col className="text-center" id="body" sm="14" xl="12">
-                <Route path="/contact" component={Contact} />
-                <Route path="/docs" component={Docs} />
-                <Route path="/links" component={Links} />
-                <Route path="/projects" component={Projects} />
-                <Route path="/" exact component={Updates} />
+                <Switch>
+                  <Route path="/contact" component={Contact} />
+                  <Route path="/docs" component={Docs} />
+                  <Route path="/links" component={Links} />
+                  <Route path="/projects" component={Projects} />
+                  <Route path="/" exact component={Updates} />
+                </Switch>
               </Col>
               <Col />
             </Row>
           </Container>
           <Footer displayPrivacy={this.displayPrivacyHandler} />
-          <Login
-            display={displayLoginModal}
-            unmount={this.hideLoginHandler}
-          />
+          <Login display={displayLoginModal} unmount={this.hideLoginHandler} />
           <Signup
             display={displaySignupModal}
             displayPrivacy={displayPrivacyModal}
