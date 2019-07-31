@@ -24,3 +24,6 @@ yarn-error.log*
 /public/img/*.png
 
 package-lock.json
+.eslintrc
+.gitignore
+.prettierrc
